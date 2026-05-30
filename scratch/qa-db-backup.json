@@ -1,0 +1,461 @@
+{
+  "adminUsers": [
+    {
+      "id": "795b6af5-d000-4689-a40b-b3417ef80889",
+      "email": "admin@tanertumerinsaat.com",
+      "passwordHash": "22d661212dca220697bc4c2ffac03c5b:8adcd637897fe14a4ccd97fca96884588e685e8ed57a2be84d8730b051f1d6cca4a9faa3c22ca4ebd9135f44d7f6de2750941e7677f805d6c144fa30bd5f3447",
+      "createdAt": "2026-05-29T11:34:26.467Z"
+    }
+  ],
+  "contentSections": [
+    {
+      "id": "5e13b2a7-7679-4e66-8a42-96efbb2db3e2",
+      "pageKey": "home",
+      "sectionKey": "hero",
+      "label": "Home Page Hero Section",
+      "dataJson": {
+        "eyebrow": "SEÇKİN YAŞAM PROJELERİ",
+        "title": "Düşünülmüş detaylarla<br className=\"hidden sm:inline\" /> inşa edilen yaşam alanları.",
+        "subtext": "Taner Tümer İnşaat; modern mimariyi, kaliteli malzeme seçimini ve güven veren uygulama disiplinini bir araya getirerek Adana’da seçkin yaşam projeleri geliştirir.",
+        "button1Text": "Projelerimizi İncele",
+        "button1Link": "#projects",
+        "button2Text": "Bilgi Al",
+        "button2Link": "#contact"
+      },
+      "updatedAt": "2026-05-29T11:34:26.467Z"
+    },
+    {
+      "id": "484a113d-7a0e-4b26-8317-75c68e46c552",
+      "pageKey": "home",
+      "sectionKey": "statement",
+      "label": "Home Page Statement Section",
+      "dataJson": {
+        "eyebrow": "YAPI FELSEFEMİZ",
+        "title": "Yaşam alanlarını yalnızca inşa etmiyor; güven, konfor ve uzun ömürlü değer üzerine tasarlıyoruz.",
+        "paragraph": "Villa, konut ve yaşam projelerinde; planlama, malzeme seçimi ve uygulama kalitesini aynı bütünün ayrılmaz parçaları olarak ele alıyoruz.",
+        "pillar1Number": "01 / YAKLAŞIM",
+        "pillar1Title": "Modern Mimari Yaklaşım",
+        "pillar1Desc": "Estetik çizgiler, fonksiyonel mekan kurgusu ve çevreyle uyumlu yaşam senaryolarını modern mühendislikle bütünleştiriyoruz.",
+        "pillar2Number": "02 / STANDART",
+        "pillar2Title": "Kaliteli Malzeme Seçimi",
+        "pillar2Desc": "Yapılarımızın estetik karakterini korurken uzun yıllar güvenli, konforlu ve masrafsız kullanım sağlayan marka seçimleri yapıyoruz.",
+        "pillar3Number": "03 / DİSİPLİN",
+        "pillar3Title": "Detaylı Uygulama Disiplini",
+        "pillar3Desc": "Projelerimizi kağıt üstündeki kusursuz detaylardan şantiyedeki milimetrik imalatlara kadar tavizsiz bir kontrol ve işçilik kalitesiyle hayata geçiriyoruz."
+      },
+      "updatedAt": "2026-05-29T11:34:26.467Z"
+    },
+    {
+      "id": "2bbfa5f5-3d78-4c5a-a7c7-9b48f8139294",
+      "pageKey": "home",
+      "sectionKey": "finalCta",
+      "label": "Home Page Final CTA Section",
+      "dataJson": {
+        "eyebrow": "İLETİŞİME GEÇİN",
+        "title": "Yeni yaşam alanınızı<br className=\"hidden sm:inline\" /> birlikte planlayalım.",
+        "description": "Villa, konut veya yatırım projeniz hakkında detaylı bilgi almak, güncel fiyat listelerimizi öğrenmek ya da satış ofisimizden randevu almak için bizimle iletişime geçebilirsiniz.",
+        "buttonText": "Bilgi Al",
+        "buttonLink": "#contact",
+        "secondaryButtonText": "Projelerimizi İncele",
+        "secondaryButtonLink": "#projects"
+      },
+      "updatedAt": "2026-05-29T11:34:26.467Z"
+    },
+    {
+      "id": "b2c0403f-a7de-4110-8a58-27cd4bb6e2d0",
+      "pageKey": "contact",
+      "sectionKey": "hero",
+      "label": "Contact Page Hero Section",
+      "dataJson": {
+        "eyebrow": "İletişim & Proje Görüşmesi",
+        "title": "Projenizi Birlikte",
+        "highlight": "Konuşalım",
+        "description": "Villa, konut ve yaşam alanı projeleriniz için bizimle iletişime geçebilir; detaylı bilgi, keşif ve proje görüşmesi talebinizi iletebilirsiniz."
+      },
+      "updatedAt": "2026-05-29T12:01:22.966Z"
+    },
+    {
+      "id": "7cb8e822-3335-4049-9a8c-c9de54c10271",
+      "pageKey": "contact",
+      "sectionKey": "quickActions",
+      "label": "Contact Quick Actions Section",
+      "dataJson": {
+        "actions": [
+          {
+            "key": "phone",
+            "title": "Telefon",
+            "text": "0 (533) 061 80 01",
+            "linkText": "Hemen Ara"
+          },
+          {
+            "key": "whatsapp",
+            "title": "WhatsApp",
+            "text": "Proje detaylarınızı hızlıca paylaşın.",
+            "linkText": "WhatsApp'tan Yaz"
+          },
+          {
+            "key": "email",
+            "title": "E-posta",
+            "text": "info@tanertumerinsaat.com",
+            "linkText": "E-posta Gönder"
+          },
+          {
+            "key": "location",
+            "title": "Konum",
+            "text": "Çukurova / Adana",
+            "linkText": "Yol Tarifi Al"
+          }
+        ]
+      },
+      "updatedAt": "2026-05-29T12:01:22.966Z"
+    },
+    {
+      "id": "5d1356c2-c9cb-4ef3-a2bb-3449201a46ce",
+      "pageKey": "contact",
+      "sectionKey": "intent",
+      "label": "Contact Intent Cards Section",
+      "dataJson": {
+        "title": "Size Nasıl Yardımcı Olabiliriz?",
+        "description": "İlgilendiğiniz konuyu seçerek formu hızlıca doldurabilirsiniz.",
+        "cards": [
+          {
+            "id": "proje-bilgisi",
+            "title": "Proje Bilgisi",
+            "description": "Villa The Same, Tümerhan Twins ve Tümerhan Towers projeleri hakkında bilgi alın.",
+            "subject": "Proje hakkında bilgi almak istiyorum",
+            "projectType": "Satış / Detaylı Bilgi",
+            "icon": "building"
+          },
+          {
+            "id": "satis-gorusmesi",
+            "title": "Satış Görüşmesi",
+            "description": "Daire, villa veya yatırım seçenekleri için görüşme talebi oluşturun.",
+            "subject": "Satış görüşmesi talep ediyorum",
+            "projectType": "Satış / Detaylı Bilgi",
+            "icon": "key"
+          },
+          {
+            "id": "kesif-planlama",
+            "title": "Keşif & Planlama",
+            "description": "Yeni proje, arsa veya uygulama detaylarınız için ön görüşme başlatın.",
+            "subject": "Keşif ve planlama görüşmesi istiyorum",
+            "projectType": "Diğer",
+            "icon": "home"
+          },
+          {
+            "id": "kurumsal-iletisim",
+            "title": "Kurumsal İletişim",
+            "description": "Basın, iş birliği veya kurumsal taleplerinizi iletin.",
+            "subject": "Kurumsal iletişim talebi",
+            "projectType": "Diğer",
+            "icon": "mail"
+          }
+        ]
+      },
+      "updatedAt": "2026-05-29T12:01:22.967Z"
+    },
+    {
+      "id": "b5fa346b-d07b-4676-8933-fdf37a1a7563",
+      "pageKey": "contact",
+      "sectionKey": "info",
+      "label": "Contact Info Section",
+      "dataJson": {
+        "title": "İletişim Bilgilerimiz",
+        "addressLabel": "Adres",
+        "phoneLabel": "Telefon",
+        "emailLabel": "E-posta",
+        "socialsTitle": "Sosyal Medya",
+        "mapTitle": "Bizi Ziyaret Edin",
+        "mapDescription": "Çukurova / Adana'daki ofisimize ulaşmak için yol tarifi alabilirsiniz.",
+        "mapButtonText": "Haritada Aç"
+      },
+      "updatedAt": "2026-05-29T12:01:22.967Z"
+    },
+    {
+      "id": "5280a453-9d31-4824-9866-125de879b957",
+      "pageKey": "contact",
+      "sectionKey": "form",
+      "label": "Contact Form Section",
+      "dataJson": {
+        "title": "İletişime Geç",
+        "description": "Lütfen formu doldurun. Detayları görüşmek veya bir toplantı planlamak için sizinle iletişime geçeceğiz.",
+        "nameLabel": "Adınız *",
+        "namePlaceholder": "Adınız Soyadınız",
+        "phoneLabel": "Telefon Numaranız",
+        "phonePlaceholder": "0 (533) 061 80 01",
+        "emailLabel": "E-posta Adresiniz",
+        "emailPlaceholder": "info@tanertumerinsaat.com",
+        "subjectLabel": "Konu *",
+        "subjectPlaceholder": "Proje hakkında bilgi almak istiyorum",
+        "projectTypeLabel": "Proje Türü",
+        "projectTypePlaceholder": "Seçiniz",
+        "regionLabel": "İlçe / Bölge",
+        "regionPlaceholder": "Seçiniz",
+        "messageLabel": "İletiniz",
+        "messagePlaceholder": "Talebinizi, ilgilendiğiniz projeyi veya görüşmek istediğiniz detayı yazabilirsiniz.",
+        "submitText": "Talebimi Gönder",
+        "helperText": "İlgilendiğiniz proje, bölge veya görüşmek istediğiniz konuyu belirttiğinizde ekibimiz sizinle daha hızlı ve doğru şekilde iletişime geçebilir.",
+        "successTitle": "Talebiniz alındı.",
+        "successText": "En kısa sürede sizinle iletişime geçeceğiz.",
+        "requiredError": "Lütfen zorunlu alanları (Adınız, Konu) doldurunuz.",
+        "contactError": "Lütfen size ulaşabilmemiz için telefon veya e-posta adresinden en az birini giriniz.",
+        "submitError": "Talebiniz gönderilemedi. Lütfen e-posta uygulamanız üzerinden gönderimi tamamlayın veya telefon/WhatsApp üzerinden bize ulaşın.",
+        "mailtoSubjectFallback": "İletişim Formu",
+        "projectTypeOptions": [
+          "Villa Projesi",
+          "Konut Projesi",
+          "Tümerhan Twins",
+          "Tümerhan Towers",
+          "Villa The Same",
+          "Satış / Detaylı Bilgi",
+          "Diğer"
+        ],
+        "regionOptions": [
+          "Çukurova",
+          "Seyhan",
+          "Yüreğir",
+          "Sarıçam",
+          "Ceyhan",
+          "Kozan",
+          "Diğer"
+        ]
+      },
+      "updatedAt": "2026-05-29T12:01:22.967Z"
+    },
+    {
+      "id": "3e942872-9a6c-44ae-b21b-6ea1f769147e",
+      "pageKey": "contact",
+      "sectionKey": "process",
+      "label": "Contact Process Section",
+      "dataJson": {
+        "title": "Talebinizden Sonra Süreç Nasıl İlerler?",
+        "description": "İletişim taleplerinizi en kısa sürede, profesyonel bir şekilde yanıtlıyoruz.",
+        "steps": [
+          {
+            "number": "01",
+            "title": "Talebinizi Alıyoruz",
+            "description": "Form, telefon veya WhatsApp üzerinden gelen talebinizi inceliyoruz."
+          },
+          {
+            "number": "02",
+            "title": "Detayları Görüşüyoruz",
+            "description": "İlgilendiğiniz proje, ihtiyaçlarınız ve uygun görüşme zamanı netleştiriliyor."
+          },
+          {
+            "number": "03",
+            "title": "Size Dönüş Sağlıyoruz",
+            "description": "Proje detayları, uygunluk ve sonraki adımlar için sizinle iletişime geçiyoruz."
+          }
+        ]
+      },
+      "updatedAt": "2026-05-29T12:01:22.967Z"
+    },
+    {
+      "id": "b99c6c69-f194-4734-b58e-77b956f133a5",
+      "pageKey": "contact",
+      "sectionKey": "cta",
+      "label": "Contact CTA Section",
+      "dataJson": {
+        "title": "Projeniz için doğru başlangıcı birlikte yapalım.",
+        "description": "Villa, konut veya yatırım projeniz hakkında detaylı bilgi almak için bizimle iletişime geçebilirsiniz.",
+        "phoneButtonText": "Hemen Ara",
+        "whatsappButtonText": "WhatsApp'tan Yaz"
+      },
+      "updatedAt": "2026-05-29T12:01:22.967Z"
+    },
+    {
+      "id": "cf4fbb6b-e029-4c3d-836a-70ceca1dcafd",
+      "pageKey": "press",
+      "sectionKey": "hero",
+      "label": "Press Page Hero Section",
+      "dataJson": {
+        "eyebrow": "Medya & Duyurular",
+        "title": "Basında Biz",
+        "description": "Taner Tümer İnşaat'ın projeleri, kurumsal duyuruları ve medya yansımalarını bu sayfada takip edebilirsiniz."
+      },
+      "updatedAt": "2026-05-29T12:01:22.967Z"
+    },
+    {
+      "id": "7ae09149-45a0-4e13-97d1-a7e27f25b69d",
+      "pageKey": "press",
+      "sectionKey": "empty",
+      "label": "Press Empty State Section",
+      "dataJson": {
+        "eyebrow": "Medya Arşivi",
+        "title": "Basın İçerikleri Yakında",
+        "description": "Projelerimiz, kurumsal duyurularımız ve medya yansımalarımız bu sayfada düzenli olarak paylaşılacaktır.",
+        "secondaryText": "Basın, iş birliği veya proje tanıtımı talepleriniz için bizimle iletişime geçebilirsiniz.",
+        "buttonText": "İletişime Geç"
+      },
+      "updatedAt": "2026-05-29T12:01:22.967Z"
+    },
+    {
+      "id": "0491e683-c5e1-41f1-bdb5-ac4d83817836",
+      "pageKey": "press",
+      "sectionKey": "mediaKit",
+      "label": "Press Media Kit Section",
+      "dataJson": {
+        "title": "Medya Kiti",
+        "description": "Taner Tümer İnşaat marka kullanımı, proje görselleri ve kurumsal bilgi talepleri için bizimle iletişime geçebilirsiniz.",
+        "items": [
+          {
+            "title": "Kurumsal Bilgiler",
+            "description": "Şirket profili, faaliyet alanları ve proje bilgileri."
+          },
+          {
+            "title": "Proje Görselleri",
+            "description": "Mevcut proje görselleri ve kurumsal kullanım talepleri için iletişime geçebilirsiniz."
+          },
+          {
+            "title": "Logo & Marka Kullanımı",
+            "description": "Marka materyalleri ve kullanım talepleri."
+          },
+          {
+            "title": "Basın İletişimi",
+            "description": "Röportaj, haber ve proje tanıtımı talepleri için iletişim."
+          }
+        ],
+        "requestText": "Talep Et"
+      },
+      "updatedAt": "2026-05-29T12:01:22.967Z"
+    },
+    {
+      "id": "1627091b-7abb-4422-a16c-e094ef772033",
+      "pageKey": "press",
+      "sectionKey": "projectsCta",
+      "label": "Press Projects CTA Section",
+      "dataJson": {
+        "title": "Projelerimizi İnceleyin",
+        "description": "Villa The Same, Tümerhan Twins ve Tümerhan Towers projelerimizi detaylı olarak inceleyebilirsiniz.",
+        "buttonText": "Projelerimize Git"
+      },
+      "updatedAt": "2026-05-29T12:01:22.967Z"
+    },
+    {
+      "id": "6cc9bb99-c405-4d36-8bfc-2da98d6b2e2b",
+      "pageKey": "press",
+      "sectionKey": "finalCta",
+      "label": "Press Final CTA Section",
+      "dataJson": {
+        "title": "Basın ve iş birliği talepleriniz için bizimle iletişime geçin.",
+        "description": "Proje tanıtımı, medya iş birliği veya kurumsal bilgi talepleriniz için ekibimizle iletişime geçebilirsiniz.",
+        "buttonText": "Bilgi Al"
+      },
+      "updatedAt": "2026-05-29T12:01:22.967Z"
+    }
+  ],
+  "contentDrafts": [],
+  "projects": [
+    {
+      "id": "villa-the-same",
+      "slug": "villa-the-same",
+      "title": "Villa The Same",
+      "category": "Villa Projesi",
+      "location": "Adana",
+      "imageCount": 25,
+      "coverImage": "/projects/villa-the-same/01.jpg",
+      "imagesFolder": "/projects/villa-the-same",
+      "shortDescription": "Akıllı ev altyapısı, özel araç girişi ve modern villa yaşamı için tasarlanan seçkin proje.",
+      "description": "Villa The Same; özel araç girişi, geniş kullanım alanları ve akıllı ev altyapısıyla modern villa yaşamına odaklanan seçkin bir projedir.",
+      "features": [
+        "Her eve 2 araçlık otopark ve araç girişi",
+        "Akıllı ev sistemleri"
+      ],
+      "gallery": [
+        "/projects/villa-the-same/01.jpg"
+      ],
+      "featured": true,
+      "published": true,
+      "order": 1,
+      "ctaText": "Yeni yaşam alanınızı birlikte planlayalım.",
+      "ctaBtnText": "Bilgi Al",
+      "ctaBtnLink": "/iletisim",
+      "updatedAt": "2026-05-29T11:34:26.468Z"
+    },
+    {
+      "id": "tumerhan-twins",
+      "slug": "tumerhan-twins",
+      "title": "Tümerhan Twins",
+      "category": "Villa Projesi",
+      "location": "Adana",
+      "imageCount": 24,
+      "coverImage": "/projects/tumerhan-twins/01.jpg",
+      "imagesFolder": "/projects/tumerhan-twins",
+      "shortDescription": "Bağımsız bahçe, sosyal alanlar, havuz ve yüksek konfor standartlarıyla planlanan özel yaşam alanı.",
+      "description": "Tümerhan Twins; geniş villa planı, bağımsız bahçe kullanımı, sosyal donatılar ve modern teknik altyapısıyla konforlu bir yaşam standardı sunar.",
+      "features": [
+        "Her eve 2 araçlık otopark ve araç girişi",
+        "Akıllı ev sistemleri",
+        "Yerden ısıtma",
+        "Güvenlik kameraları",
+        "Havuz",
+        "Elektrikli araç şarj istasyonu",
+        "Merkezi lokasyon",
+        "Basketbol sahası",
+        "Havuzbaşı kafeterya",
+        "Her eve bağımsız bahçe",
+        "Merkezi klima",
+        "GES altyapısı",
+        "5+1 tüm villalar",
+        "5'li ankastre",
+        "Dış cephe mekanik kaplama"
+      ],
+      "gallery": [
+        "/projects/tumerhan-twins/01.jpg"
+      ],
+      "featured": true,
+      "published": true,
+      "order": 2,
+      "ctaText": "Yeni yaşam alanınızı birlikte planlayalım.",
+      "ctaBtnText": "Bilgi Al",
+      "ctaBtnLink": "/iletisim",
+      "updatedAt": "2026-05-29T11:34:26.468Z"
+    },
+    {
+      "id": "tumerhan-towers",
+      "slug": "tumerhan-towers",
+      "title": "Tümerhan Towers",
+      "category": "Konut Projesi",
+      "location": "Adana",
+      "imageCount": 6,
+      "coverImage": "/projects/tumerhan-towers/01.jpg",
+      "imagesFolder": "/projects/tumerhan-towers",
+      "shortDescription": "Geniş kapalı mutfak, kaliteli iç mekan malzemeleri ve modern detaylarla tasarlanmış konut projesi.",
+      "description": "Tümerhan Towers; fonksiyonel daire planı, kaliteli marka tercihleri ve detaylı iç mimari uygulamalarıyla modern konut yaşamı için tasarlanmıştır.",
+      "features": [
+        "3+1 geniş kapalı mutfak",
+        "Üçlü ankastre set",
+        "Quartz mutfak tezgahı",
+        "ECA armatürler",
+        "Baymak radyatörler",
+        "Multi klima sistemine uygun tesisat",
+        "Vario Exclusive derzli parke",
+        "Egepen PVC doğramalar ve aksesuarlar",
+        "Özel tasarım gizli ledli asma tavanlar",
+        "Filli Momento Max iç cephe boyası",
+        "Kütahya 60x120 seramik",
+        "Özel tasarım lake mutfak dolapları",
+        "Özel tasarım lake vestiyer",
+        "Özel tasarım lake kapılar",
+        "Özel tasarım lake banyo dolapları",
+        "Ebeveyn banyosu",
+        "Giyinme odası",
+        "Misafir WC"
+      ],
+      "gallery": [
+        "/projects/tumerhan-towers/01.jpg"
+      ],
+      "featured": true,
+      "published": true,
+      "order": 3,
+      "ctaText": "Yeni yaşam alanınızı birlikte planlayalım.",
+      "ctaBtnText": "Bilgi Al",
+      "ctaBtnLink": "/iletisim",
+      "updatedAt": "2026-05-29T11:34:26.468Z"
+    }
+  ],
+  "projectDrafts": [],
+  "updatedAt": "2026-05-29T12:01:22.967Z",
+  "pressItems": [],
+  "pressDrafts": []
+}

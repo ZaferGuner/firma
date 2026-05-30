@@ -1,0 +1,262 @@
+@import "tailwindcss";
+
+:root {
+  --site-bg: #F7F4EF;
+  --site-surface: #FFFEFA;
+  --site-soft: #EEEAE2;
+
+  --site-text: #1E1E1C;
+  --site-body: #33332F;
+  --site-muted: #5D5A53;
+  --site-label: #4A4A43;
+  --site-border: #D6D2C7;
+
+  --site-primary: #595950;
+  --site-primary-hover: #484841;
+  --site-primary-soft: #E9E8E1;
+
+  --site-accent: #78624F;
+  --site-accent-soft: #EFE7DF;
+
+  --site-red: #C5162E;
+
+  --site-dark: #202224;
+  --site-dark-surface: #2A2D30;
+  --site-dark-text: #F5F2EA;
+  --site-dark-body: #ECE7DD;
+  --site-dark-muted: #C8C2B6;
+  --site-dark-label: #DED8CC;
+
+  /* Legacy variable mappings to maintain compatibility with existing global references */
+  --background: var(--site-bg);
+  --background-soft: var(--site-soft);
+  --surface: var(--site-surface);
+  --surface-strong: var(--site-surface);
+  --foreground: var(--site-text);
+  --muted-foreground: var(--site-muted);
+  --muted: var(--site-muted);
+  --accent-red: var(--site-red);
+  --line: var(--site-border);
+  --blueprint-line: var(--site-border);
+  --glass: transparent;
+  --primary: var(--site-primary);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-soft: var(--background-soft);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-accent-red: var(--accent-red);
+  --color-line: var(--line);
+  --color-blueprint-line: var(--blueprint-line);
+  --color-glass: var(--glass);
+  --color-primary: var(--primary);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Specific site design tokens */
+  --color-site-bg: var(--site-bg);
+  --color-site-surface: var(--site-surface);
+  --color-site-soft: var(--site-soft);
+  --color-site-text: var(--site-text);
+  --color-text: var(--site-text);
+  --color-site-body: var(--site-body);
+  --color-site-muted: var(--site-muted);
+  --color-site-label: var(--site-label);
+  --color-site-border: var(--site-border);
+  --color-site-primary: var(--site-primary);
+  --color-site-primary-hover: var(--site-primary-hover);
+  --color-site-primary-soft: var(--site-primary-soft);
+  --color-site-accent: var(--site-accent);
+  --color-site-accent-soft: var(--site-accent-soft);
+  --color-site-red: var(--site-red);
+  --color-site-dark: var(--site-dark);
+  --color-site-dark-surface: var(--site-dark-surface);
+  --color-site-dark-text: var(--site-dark-text);
+  --color-dark-text: var(--site-dark-text);
+  --color-site-dark-body: var(--site-dark-body);
+  --color-site-dark-muted: var(--site-dark-muted);
+  --color-site-dark-label: var(--site-dark-label);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.admin-edit-bar {
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+  color: var(--site-text);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  background: var(--site-bg);
+}
+
+::selection {
+  background: var(--site-primary-soft);
+  color: var(--site-text);
+}
+
+body {
+  --sb-track-color: var(--site-soft);
+  --sb-thumb-color: var(--site-red);
+  --sb-size: 10px;
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size)
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 6px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 6px;
+  border: 1px solid var(--site-red);
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color)
+                     var(--sb-track-color);
+  }
+}
+
+html.is-iframe-transition-preview,
+body.is-iframe-transition-preview {
+  background: #050a0a !important;
+  scroll-behavior: auto !important;
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+html.is-iframe-transition-preview::-webkit-scrollbar,
+body.is-iframe-transition-preview::-webkit-scrollbar {
+  display: none !important;
+}
+
+html.is-iframe-transition-preview * {
+  scroll-behavior: auto !important;
+}
+
+html.is-iframe-transition-preview [data-preview-ready],
+html.is-iframe-transition-preview [data-reveal],
+html.is-iframe-transition-preview [data-motion-reveal],
+html.is-iframe-transition-preview [data-gsap-reveal] {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html.is-iframe-transition-preview [data-preview-transform-reset],
+html.is-iframe-transition-preview [data-reveal],
+html.is-iframe-transition-preview [data-motion-reveal],
+html.is-iframe-transition-preview [data-gsap-reveal] {
+  transform: none !important;
+  filter: none !important;
+  clip-path: none !important;
+}
+
+section[id] {
+  scroll-margin-top: 96px;
+}
+
+section[id] { scroll-margin-top: 96px; }
+
+/* Suppress Hero Text Animations after Route Transition completed */
+html.suppress-hero-text-animation [data-hero-text],
+body.suppress-hero-text-animation [data-hero-text],
+html[data-suppress-page-intro="true"] [data-hero-text],
+html[data-suppress-page-intro="true"] [data-page-intro],
+html[data-suppress-page-intro="true"] [data-hero-intro],
+html[data-suppress-page-intro="true"] [data-reveal-intro] {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  clip-path: none !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+html.suppress-hero-text-animation [data-hero-text] *,
+body.suppress-hero-text-animation [data-hero-text] *,
+html[data-suppress-page-intro="true"] [data-hero-text] *,
+html[data-suppress-page-intro="true"] [data-page-intro] *,
+html[data-suppress-page-intro="true"] [data-hero-intro] *,
+html[data-suppress-page-intro="true"] [data-reveal-intro] * {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  clip-path: none !important;
+  animation: none !important;
+  transition-delay: 0ms !important;
+  transition-duration: 0ms !important;
+}
+
+/* Extra Route Transition safety rules to hide floating widgets */
+html[data-route-transition="preparing"] [data-floating-whatsapp],
+html[data-route-transition="previewing"] [data-floating-whatsapp],
+html[data-route-transition="committing"] [data-floating-whatsapp],
+html[data-route-transition="preparing"] [data-floating-cta],
+html[data-route-transition="previewing"] [data-floating-cta],
+html[data-route-transition="committing"] [data-floating-cta] {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+/* Fully hide the WhatsApp button and other floating widgets in iframe previews */
+html[data-transition-preview="true"] [data-floating-whatsapp],
+html.is-iframe-transition-preview [data-floating-whatsapp],
+html[data-transition-preview="true"] [data-floating-cta],
+html.is-iframe-transition-preview [data-floating-cta] {
+  display: none !important;
+}
+
+html[data-route-transition="preparing"],
+html[data-route-transition="previewing"],
+html[data-route-transition="committing"] {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+html[data-route-transition="preparing"] body,
+html[data-route-transition="previewing"] body,
+html[data-route-transition="committing"] body {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+
+html[data-route-transition="preparing"] [data-transition-preview],
+html[data-route-transition="previewing"] [data-transition-preview],
+html[data-route-transition="committing"] [data-transition-preview],
+html[data-route-transition="preparing"] iframe,
+html[data-route-transition="previewing"] iframe,
+html[data-route-transition="committing"] iframe {
+  opacity: 1 !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  transition-property: transform !important;
+  animation: none !important;
+}
+
+

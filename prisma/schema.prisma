@@ -1,0 +1,126 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model ContentSection {
+  id         String   @id @default(uuid())
+  pageKey    String
+  sectionKey String
+  label      String
+  dataJson   Json
+  updatedAt  DateTime @updatedAt
+
+  @@unique([pageKey, sectionKey])
+}
+
+model ContentDraft {
+  id         String   @id @default(uuid())
+  pageKey    String
+  sectionKey String
+  dataJson   Json
+  updatedAt  DateTime @updatedAt
+
+  @@unique([pageKey, sectionKey])
+}
+
+model Project {
+  id               String   @id @default(uuid())
+  slug             String   @unique
+  title            String
+  category         String
+  location         String
+  imageCount       Int      @default(1)
+  coverImage       String
+  imagesFolder     String
+  shortDescription String
+  description      String
+  features         String[]
+  gallery          String[]
+  featured         Boolean  @default(false)
+  published        Boolean  @default(false)
+  order            Int      @default(0)
+  ctaText          String?
+  ctaBtnText       String?
+  ctaBtnLink       String?
+  updatedAt        DateTime @updatedAt
+}
+
+model ProjectDraft {
+  id               String   @id @default(uuid())
+  slug             String   @unique
+  title            String
+  category         String
+  location         String
+  imageCount       Int      @default(1)
+  coverImage       String
+  imagesFolder     String
+  shortDescription String
+  description      String
+  features         String[]
+  gallery          String[]
+  featured         Boolean  @default(false)
+  published        Boolean  @default(false)
+  order            Int      @default(0)
+  ctaText          String?
+  ctaBtnText       String?
+  ctaBtnLink       String?
+  updatedAt        DateTime @updatedAt
+}
+
+model PressItem {
+  id          String   @id @default(uuid())
+  title       String
+  source      String
+  date        String
+  type        String
+  description String
+  image       String?
+  url         String?
+  featured    Boolean  @default(false)
+  published   Boolean  @default(false)
+  order       Int      @default(0)
+  updatedAt   DateTime @updatedAt
+}
+
+model PressDraft {
+  id          String   @id @default(uuid())
+  title       String
+  source      String
+  date        String
+  type        String
+  description String
+  image       String?
+  url         String?
+  featured    Boolean  @default(false)
+  published   Boolean  @default(false)
+  order       Int      @default(0)
+  updatedAt   DateTime @updatedAt
+}
+
+model Inquiry {
+  id          String   @id @default(uuid())
+  name        String
+  phone       String?
+  email       String?
+  subject     String
+  projectType String?
+  district    String?
+  message     String
+  status      String   @default("Yeni")
+  source      String   @default("contact-form")
+  note        String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
