@@ -87,10 +87,6 @@
   box-sizing: border-box;
 }
 
-.admin-edit-bar {
-  z-index: 9999;
-  pointer-events: auto;
-}
 
 html {
   min-height: 100%;

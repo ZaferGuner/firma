@@ -19,7 +19,7 @@ export function AboutManifesto() {
     highlights.forEach(word => {
       // Case sensitive replacement to avoid breaking HTML, but our text matches these exactly
       const regex = new RegExp(`(${word})`, "gi");
-      formattedText = formattedText.replace(regex, `<span class="text-site-text font-normal">$1</span>`);
+      formattedText = formattedText.replace(regex, `<span class="text-site-text font-semibold">$1</span>`);
     });
     
     return <span dangerouslySetInnerHTML={{ __html: formattedText }} />;
@@ -33,10 +33,10 @@ export function AboutManifesto() {
           {/* Sticky Label Column */}
           <div className="relative">
             <div className="lg:sticky lg:top-40">
-              <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.24em] text-site-accent">
+              <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.24em] text-red-600">
                 MANİFESTO
               </span>
-              <div className="mt-8 hidden lg:block w-px h-24 bg-site-border" />
+              <div className="mt-8 hidden lg:block w-px h-24 bg-red-600" />
             </div>
           </div>
 

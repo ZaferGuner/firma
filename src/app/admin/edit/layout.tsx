@@ -73,7 +73,7 @@ export default async function AdminEditLayout({ children }: AdminEditLayoutProps
       initialPressPublished={pressPublished}
       initialPressDrafts={pressDrafts}
     >
-      <div className="relative min-h-screen pt-[60px] bg-background">
+      <div className="relative min-h-screen bg-background">
         <AdminEditBar />
 
         <div className="relative w-full overflow-hidden">

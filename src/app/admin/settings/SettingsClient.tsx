@@ -75,7 +75,7 @@ function SettingsForm() {
   );
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-8 md:px-8 mt-[60px]">
+    <div className="mx-auto max-w-5xl px-4 py-8 md:px-8">
       <div className="mb-8">
         <h1 className="font-mono text-xl font-bold uppercase tracking-widest text-[#08090B]">
           Ayarlar ve SEO Yönetimi
