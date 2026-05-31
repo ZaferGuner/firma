@@ -33,7 +33,7 @@ export function ProjectsHero() {
           data-hero-intro
         >
           <span className="font-mono text-[10px] font-bold tracking-[0.25em] text-[#C5162E] uppercase">
-            PORTFOLYO VİTRİNİ
+            PORTFOLIO SHOWCASE
           </span>
         </motion.div>
 
@@ -46,7 +46,7 @@ export function ProjectsHero() {
           data-page-intro
           data-hero-intro
         >
-          Projelerimiz
+          PROJECTS
         </motion.h1>
         
         <motion.p 

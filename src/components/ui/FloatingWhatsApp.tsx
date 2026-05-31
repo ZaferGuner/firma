@@ -23,7 +23,9 @@ export function FloatingWhatsApp() {
       document.documentElement.dataset.transitionPreview === "true" ||
       document.documentElement.classList.contains("is-iframe-transition-preview");
 
-    if (isAdmin || isPreview) {
+    const isMaintenance = window.location.pathname === "/bakim";
+
+    if (isAdmin || isPreview || isMaintenance) {
       setShouldRender(false);
       return;
     }
@@ -57,13 +59,13 @@ export function FloatingWhatsApp() {
       rel="noopener noreferrer"
       aria-label="WhatsApp ile iletişime geçin"
       data-floating-whatsapp="true"
-      className={`fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_4px_12px_rgba(0,0,0,0.15)] cursor-pointer transition-all duration-[350ms] ease-out ${
+      className={`fixed bottom-[110px] right-5 md:bottom-8 md:right-8 z-[60] flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_4px_12px_rgba(0,0,0,0.15)] cursor-pointer transition-all duration-[350ms] ease-out ${
         visible
           ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
           : "opacity-0 translate-y-3 scale-[0.96] pointer-events-none"
       }`}
     >
-      <i className="fa-brands fa-whatsapp text-[32px] leading-none" />
+      <i className="fa-brands fa-whatsapp text-[28px] md:text-[32px] leading-none" />
     </a>
   );
 }

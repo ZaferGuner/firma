@@ -78,6 +78,17 @@ export function ProjectDetailHero({ project }: ProjectDetailHeroProps) {
               <p className="text-xl md:text-2xl text-[rgba(247,244,239,0.84)] font-light leading-relaxed" data-hero-text data-page-intro data-hero-intro>
                 {data.shortDescription}
               </p>
+
+              {data.specialPreviewEnabled && data.specialPreviewAccessMode === "public" && (
+                <div className="mt-10" data-hero-text data-page-intro data-hero-intro>
+                  <IframeTransitionLink
+                    href={`/projeler/${project.slug}/on-gosterim`}
+                    className="inline-flex items-center gap-2 bg-[#F5F2EA] text-[#2E302B] px-6 py-3 text-[11px] font-mono font-bold uppercase tracking-widest transition-colors hover:bg-white border border-transparent hover:border-[#2E302B]/20"
+                  >
+                    Özel Ön Gösterimi Aç
+                  </IframeTransitionLink>
+                </div>
+              )}
             </motion.div>
           </div>
         </div>

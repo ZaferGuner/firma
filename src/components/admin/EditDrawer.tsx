@@ -385,6 +385,30 @@ export function EditDrawer() {
       handleProjectFieldChange("gallery", list);
     };
 
+    const updateSpecialHighlight = (index: number, value: string) => {
+      const list = [...(projectData.specialPreviewHighlights || [])];
+      list[index] = value;
+      handleProjectFieldChange("specialPreviewHighlights", list);
+    };
+    const addSpecialHighlight = () => handleProjectFieldChange("specialPreviewHighlights", [...(projectData.specialPreviewHighlights || []), "Yeni Vurgu"]);
+    const removeSpecialHighlight = (index: number) => handleProjectFieldChange("specialPreviewHighlights", (projectData.specialPreviewHighlights || []).filter((_: any, i: number) => i !== index));
+
+    const updateBlueprintNote = (index: number, field: string, value: string) => {
+      const list = [...(projectData.specialPreviewBlueprintNotes || [])];
+      list[index] = { ...list[index], [field]: value };
+      handleProjectFieldChange("specialPreviewBlueprintNotes", list);
+    };
+    const addBlueprintNote = () => handleProjectFieldChange("specialPreviewBlueprintNotes", [...(projectData.specialPreviewBlueprintNotes || []), { label: "", value: "" }]);
+    const removeBlueprintNote = (index: number) => handleProjectFieldChange("specialPreviewBlueprintNotes", (projectData.specialPreviewBlueprintNotes || []).filter((_: any, i: number) => i !== index));
+
+    const updateTextureNote = (index: number, field: string, value: string) => {
+      const list = [...(projectData.specialPreviewTextureNotes || [])];
+      list[index] = { ...list[index], [field]: value };
+      handleProjectFieldChange("specialPreviewTextureNotes", list);
+    };
+    const addTextureNote = () => handleProjectFieldChange("specialPreviewTextureNotes", [...(projectData.specialPreviewTextureNotes || []), { title: "", description: "" }]);
+    const removeTextureNote = (index: number) => handleProjectFieldChange("specialPreviewTextureNotes", (projectData.specialPreviewTextureNotes || []).filter((_: any, i: number) => i !== index));
+
     return (
       <div className="space-y-6">
         <SectionTitle>Proje Meta Detayları</SectionTitle>
@@ -467,6 +491,127 @@ export function EditDrawer() {
         <Field label="Buton Linki">
           <input className={monoInputClass} value={projectData.ctaBtnLink || ""} onChange={(event) => handleProjectFieldChange("ctaBtnLink", event.target.value)} />
         </Field>
+
+        {/* ÖZEL PROJE ÖN GÖSTERİM BÖLÜMÜ */}
+        <div className="pt-6 mt-6 border-t border-neutral-300">
+          <SectionTitle>Özel Proje Ön Gösterim</SectionTitle>
+          <div className="space-y-6 mt-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <label className="flex items-center gap-2 cursor-pointer font-mono text-[9px] font-bold uppercase tracking-wider text-neutral-500">
+                <input type="checkbox" className="accent-[var(--color-primary)] h-4 w-4" checked={!!projectData.specialPreviewEnabled} onChange={(event) => handleProjectFieldChange("specialPreviewEnabled", event.target.checked)} />
+                <span>Ön Gösterim Aktif</span>
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer font-mono text-[9px] font-bold uppercase tracking-wider text-neutral-500">
+                <input type="checkbox" className="accent-[var(--color-primary)] h-4 w-4" checked={!!projectData.specialPreviewNoIndex} onChange={(event) => handleProjectFieldChange("specialPreviewNoIndex", event.target.checked)} />
+                <span>Arama Motorlarına Kapat (NoIndex)</span>
+              </label>
+            </div>
+            
+            <Field label="Erişim Modu">
+              <select className={inputClass} value={projectData.specialPreviewAccessMode || "public"} onChange={(event) => handleProjectFieldChange("specialPreviewAccessMode", event.target.value)}>
+                <option value="public">Public (Sitede Görünür, Kartlarda CTA Çıkar)</option>
+                <option value="unlisted">Unlisted (Sadece Gizli Linkle, CTA Çıkmaz)</option>
+              </select>
+            </Field>
+
+            <Field label="Ön Gösterim Başlığı">
+              <input className={inputClass} value={projectData.specialPreviewTitle || ""} onChange={(event) => handleProjectFieldChange("specialPreviewTitle", event.target.value)} />
+            </Field>
+            <Field label="Alt Başlık">
+              <input className={inputClass} value={projectData.specialPreviewSubtitle || ""} onChange={(event) => handleProjectFieldChange("specialPreviewSubtitle", event.target.value)} />
+            </Field>
+            <Field label="Durum Etiketi (Örn: Sınırlı Ön İzleme)">
+              <input className={inputClass} value={projectData.specialPreviewStatus || ""} onChange={(event) => handleProjectFieldChange("specialPreviewStatus", event.target.value)} />
+            </Field>
+            <Field label="Kısa Giriş Metni">
+              <textarea rows={3} className={inputClass} value={projectData.specialPreviewIntro || ""} onChange={(event) => handleProjectFieldChange("specialPreviewIntro", event.target.value)} />
+            </Field>
+
+            <SectionTitle>Ön Gösterim - İçerik (Konsept & Mimari)</SectionTitle>
+            <Field label="Konsept Başlığı">
+              <input className={inputClass} value={projectData.specialPreviewSections?.conceptTitle || ""} onChange={(event) => handleProjectFieldChange("specialPreviewSections", { ...projectData.specialPreviewSections, conceptTitle: event.target.value })} />
+            </Field>
+            <Field label="Konsept Metni">
+              <textarea rows={3} className={inputClass} value={projectData.specialPreviewSections?.conceptText || ""} onChange={(event) => handleProjectFieldChange("specialPreviewSections", { ...projectData.specialPreviewSections, conceptText: event.target.value })} />
+            </Field>
+            <Field label="Mimari Yaklaşım Başlığı">
+              <input className={inputClass} value={projectData.specialPreviewSections?.architectureTitle || ""} onChange={(event) => handleProjectFieldChange("specialPreviewSections", { ...projectData.specialPreviewSections, architectureTitle: event.target.value })} />
+            </Field>
+            <Field label="Mimari Yaklaşım Metni">
+              <textarea rows={3} className={inputClass} value={projectData.specialPreviewSections?.architectureText || ""} onChange={(event) => handleProjectFieldChange("specialPreviewSections", { ...projectData.specialPreviewSections, architectureText: event.target.value })} />
+            </Field>
+            <Field label="Yaşam Deneyimi Başlığı">
+              <input className={inputClass} value={projectData.specialPreviewSections?.lifestyleTitle || ""} onChange={(event) => handleProjectFieldChange("specialPreviewSections", { ...projectData.specialPreviewSections, lifestyleTitle: event.target.value })} />
+            </Field>
+            <Field label="Yaşam Deneyimi Metni">
+              <textarea rows={3} className={inputClass} value={projectData.specialPreviewSections?.lifestyleText || ""} onChange={(event) => handleProjectFieldChange("specialPreviewSections", { ...projectData.specialPreviewSections, lifestyleText: event.target.value })} />
+            </Field>
+            <Field label="Teknik Yapı Başlığı">
+              <input className={inputClass} value={projectData.specialPreviewSections?.technicalTitle || ""} onChange={(event) => handleProjectFieldChange("specialPreviewSections", { ...projectData.specialPreviewSections, technicalTitle: event.target.value })} />
+            </Field>
+            <Field label="Teknik Yapı Metni">
+              <textarea rows={3} className={inputClass} value={projectData.specialPreviewSections?.technicalText || ""} onChange={(event) => handleProjectFieldChange("specialPreviewSections", { ...projectData.specialPreviewSections, technicalText: event.target.value })} />
+            </Field>
+            <Field label="Malzeme/Doku Başlığı">
+              <input className={inputClass} value={projectData.specialPreviewSections?.materialsTitle || ""} onChange={(event) => handleProjectFieldChange("specialPreviewSections", { ...projectData.specialPreviewSections, materialsTitle: event.target.value })} />
+            </Field>
+            <Field label="Malzeme/Doku Metni">
+              <textarea rows={3} className={inputClass} value={projectData.specialPreviewSections?.materialsText || ""} onChange={(event) => handleProjectFieldChange("specialPreviewSections", { ...projectData.specialPreviewSections, materialsText: event.target.value })} />
+            </Field>
+
+            <SectionTitle>Ön Gösterim - Öne Çıkanlar (Highlights)</SectionTitle>
+            <div className="space-y-3">
+              {(projectData.specialPreviewHighlights || []).map((val: string, index: number) => (
+                <div key={index} className="flex items-center gap-1.5">
+                  <input className="flex-1 bg-[var(--color-surface)] border border-neutral-300 px-2 py-1.5 text-xs text-[var(--color-text)] focus:outline-none focus:border-[var(--color-primary)]" value={val} onChange={(e) => updateSpecialHighlight(index, e.target.value)} />
+                  <button type="button" onClick={() => removeSpecialHighlight(index)} className="p-1.5 text-neutral-400 hover:text-[var(--color-primary)] hover:bg-red-50"><Trash2 size={13} /></button>
+                </div>
+              ))}
+              <button type="button" onClick={addSpecialHighlight} className="w-full flex items-center justify-center gap-1.5 border border-dashed border-neutral-300 py-2 text-xs font-mono text-neutral-500 uppercase hover:border-black hover:text-text"><Plus size={14} /> Highlight Ekle</button>
+            </div>
+
+            <SectionTitle>Ön Gösterim - Blueprint Notları</SectionTitle>
+            <div className="space-y-3">
+              {(projectData.specialPreviewBlueprintNotes || []).map((note: any, index: number) => (
+                <div key={index} className="flex gap-1.5 border border-neutral-200 p-2">
+                  <div className="flex-1 space-y-2">
+                    <input className="w-full bg-[var(--color-surface)] border border-neutral-300 px-2 py-1 text-xs" placeholder="Etiket (Örn: G3-XY)" value={note.label} onChange={(e) => updateBlueprintNote(index, "label", e.target.value)} />
+                    <input className="w-full bg-[var(--color-surface)] border border-neutral-300 px-2 py-1 text-xs" placeholder="Değer (Örn: Yapısal Aks)" value={note.value} onChange={(e) => updateBlueprintNote(index, "value", e.target.value)} />
+                  </div>
+                  <button type="button" onClick={() => removeBlueprintNote(index)} className="self-start p-1.5 text-neutral-400 hover:text-[var(--color-primary)] hover:bg-red-50"><Trash2 size={13} /></button>
+                </div>
+              ))}
+              <button type="button" onClick={addBlueprintNote} className="w-full flex items-center justify-center gap-1.5 border border-dashed border-neutral-300 py-2 text-xs font-mono text-neutral-500 uppercase hover:border-black hover:text-text"><Plus size={14} /> Blueprint Notu Ekle</button>
+            </div>
+
+            <SectionTitle>Ön Gösterim - Doku / Malzeme Notları</SectionTitle>
+            <div className="space-y-3">
+              {(projectData.specialPreviewTextureNotes || []).map((note: any, index: number) => (
+                <div key={index} className="flex gap-1.5 border border-neutral-200 p-2">
+                  <div className="flex-1 space-y-2">
+                    <input className="w-full bg-[var(--color-surface)] border border-neutral-300 px-2 py-1 text-xs" placeholder="Başlık" value={note.title} onChange={(e) => updateTextureNote(index, "title", e.target.value)} />
+                    <textarea rows={2} className="w-full bg-[var(--color-surface)] border border-neutral-300 px-2 py-1 text-xs" placeholder="Açıklama" value={note.description} onChange={(e) => updateTextureNote(index, "description", e.target.value)} />
+                  </div>
+                  <button type="button" onClick={() => removeTextureNote(index)} className="self-start p-1.5 text-neutral-400 hover:text-[var(--color-primary)] hover:bg-red-50"><Trash2 size={13} /></button>
+                </div>
+              ))}
+              <button type="button" onClick={addTextureNote} className="w-full flex items-center justify-center gap-1.5 border border-dashed border-neutral-300 py-2 text-xs font-mono text-neutral-500 uppercase hover:border-black hover:text-text"><Plus size={14} /> Doku Notu Ekle</button>
+            </div>
+
+            <SectionTitle>Ön Gösterim - Kapanış CTA</SectionTitle>
+            <Field label="CTA Başlığı">
+              <input className={inputClass} value={projectData.specialPreviewCtaTitle || ""} onChange={(event) => handleProjectFieldChange("specialPreviewCtaTitle", event.target.value)} />
+            </Field>
+            <Field label="CTA Metni">
+              <input className={inputClass} value={projectData.specialPreviewCtaText || ""} onChange={(event) => handleProjectFieldChange("specialPreviewCtaText", event.target.value)} />
+            </Field>
+            <Field label="Buton Label">
+              <input className={inputClass} value={projectData.specialPreviewCtaButtonLabel || ""} onChange={(event) => handleProjectFieldChange("specialPreviewCtaButtonLabel", event.target.value)} />
+            </Field>
+
+          </div>
+        </div>
+
       </div>
     );
   };

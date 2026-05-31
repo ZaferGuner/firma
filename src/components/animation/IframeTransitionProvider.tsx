@@ -447,20 +447,14 @@ export function IframeTransitionProvider({ children }: { children: ReactNode }) 
 
         if (arrivedFromTransition) {
           document.documentElement.dataset.suppressPageIntro = "true";
+          sessionStorage.removeItem("tt-route-transition-arrival");
+          sessionStorage.removeItem("tt-route-transition-ts");
 
           window.dispatchEvent(
             new CustomEvent("tt:suppress-page-intro", {
               detail: { pathname },
             })
           );
-
-          const timer = setTimeout(() => {
-            sessionStorage.removeItem("tt-route-transition-arrival");
-            sessionStorage.removeItem("tt-route-transition-ts");
-            delete document.documentElement.dataset.suppressPageIntro;
-          }, 1600);
-
-          return () => clearTimeout(timer);
         }
       }
       previousPathRef.current = pathname;

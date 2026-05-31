@@ -25,7 +25,7 @@ const navigationContactOpenDelay = 120;
 
 export function Header({ initialCtaText = "BİLGİ AL", initialCtaLink = "/iletisim" }: { initialCtaText?: string, initialCtaLink?: string }) {
   const { phase } = useIframeTransition();
-  const [ctaVisible, setCtaVisible] = useState(true);
+  const [ctaVisible, setCtaVisible] = useState(false);
 
   useEffect(() => {
     if (phase !== "idle") {
@@ -121,7 +121,7 @@ export function Header({ initialCtaText = "BİLGİ AL", initialCtaLink = "/ileti
 
   useEffect(() => {
     const updateBarWidth = () => {
-      setBarWidth(Math.max(58, Math.min(360, window.innerWidth - 32)));
+      setBarWidth(Math.max(58, Math.min(360, window.innerWidth - 96)));
     };
 
     updateBarWidth();
@@ -202,6 +202,10 @@ export function Header({ initialCtaText = "BİLGİ AL", initialCtaLink = "/ileti
 
   const logoHref = getAdminLink("/");
 
+  if (pathname === "/bakim") {
+    return null;
+  }
+
   return (
     <>
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[100] h-[72px]">
@@ -224,7 +228,7 @@ export function Header({ initialCtaText = "BİLGİ AL", initialCtaLink = "/ileti
         {initialCtaLink === "/iletisim" || initialCtaLink === "/contact" ? (
           <button
             data-floating-cta="true"
-            className={`pointer-events-auto fixed right-5 top-[18px] inline-flex h-10 items-center gap-1.5 px-5 text-[10px] font-bold uppercase tracking-[0.24em] transition-all duration-[350ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red sm:right-6 ${
+            className={`pointer-events-auto fixed right-5 top-[18px] inline-flex h-8 sm:h-10 items-center gap-1.5 px-3.5 sm:px-5 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.24em] transition-all duration-[350ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red sm:right-6 ${
               headerTheme === "light"
                 ? "bg-[#111111] text-white hover:bg-[#222222]"
                 : "bg-white text-black hover:bg-neutral-200"
@@ -237,13 +241,13 @@ export function Header({ initialCtaText = "BİLGİ AL", initialCtaLink = "/ileti
             type="button"
           >
             {initialCtaText.toUpperCase()}
-            <ArrowUpRight size={13} strokeWidth={2} />
+            <ArrowUpRight className="w-3 h-3 sm:w-[13px] sm:h-[13px]" strokeWidth={2} />
           </button>
         ) : (
           <a
             data-floating-cta="true"
             href={initialCtaLink}
-            className={`pointer-events-auto fixed right-5 top-[18px] inline-flex h-10 items-center gap-1.5 px-5 text-[10px] font-bold uppercase tracking-[0.24em] transition-all duration-[350ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red sm:right-6 ${
+            className={`pointer-events-auto fixed right-5 top-[18px] inline-flex h-8 sm:h-10 items-center gap-1.5 px-3.5 sm:px-5 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.24em] transition-all duration-[350ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red sm:right-6 ${
               headerTheme === "light"
                 ? "bg-[#111111] text-white hover:bg-[#222222]"
                 : "bg-white text-black hover:bg-neutral-200"
@@ -254,7 +258,7 @@ export function Header({ initialCtaText = "BİLGİ AL", initialCtaLink = "/ileti
             }`}
           >
             {initialCtaText.toUpperCase()}
-            <ArrowUpRight size={13} strokeWidth={2} />
+            <ArrowUpRight className="w-3 h-3 sm:w-[13px] sm:h-[13px]" strokeWidth={2} />
           </a>
         )}
       </div>

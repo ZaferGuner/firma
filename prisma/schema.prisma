@@ -54,6 +54,24 @@ model Project {
   ctaText          String?
   ctaBtnText       String?
   ctaBtnLink       String?
+
+  // Özel Proje Ön Gösterim Alanları
+  specialPreviewEnabled        Boolean @default(false)
+  specialPreviewNoIndex        Boolean @default(true)
+  specialPreviewAccessMode     String  @default("public")
+  specialPreviewTitle          String?
+  specialPreviewSubtitle       String?
+  specialPreviewIntro          String?
+  specialPreviewStatus         String?
+  specialPreviewAccessLabel    String?
+  specialPreviewSections       Json?
+  specialPreviewHighlights     String[]
+  specialPreviewBlueprintNotes Json?
+  specialPreviewTextureNotes   Json?
+  specialPreviewCtaTitle       String?
+  specialPreviewCtaText        String?
+  specialPreviewCtaButtonLabel String?
+
   updatedAt        DateTime @updatedAt
 }
 
@@ -76,6 +94,24 @@ model ProjectDraft {
   ctaText          String?
   ctaBtnText       String?
   ctaBtnLink       String?
+
+  // Özel Proje Ön Gösterim Alanları
+  specialPreviewEnabled        Boolean @default(false)
+  specialPreviewNoIndex        Boolean @default(true)
+  specialPreviewAccessMode     String  @default("public")
+  specialPreviewTitle          String?
+  specialPreviewSubtitle       String?
+  specialPreviewIntro          String?
+  specialPreviewStatus         String?
+  specialPreviewAccessLabel    String?
+  specialPreviewSections       Json?
+  specialPreviewHighlights     String[]
+  specialPreviewBlueprintNotes Json?
+  specialPreviewTextureNotes   Json?
+  specialPreviewCtaTitle       String?
+  specialPreviewCtaText        String?
+  specialPreviewCtaButtonLabel String?
+
   updatedAt        DateTime @updatedAt
 }
 

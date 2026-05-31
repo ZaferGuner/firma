@@ -29,9 +29,9 @@ export function HomeHero({ intro = true, initialData }: HomeHeroProps) {
     title: "Düşünülmüş detaylarla<br className=\"hidden sm:inline\" /> inşa edilen yaşam alanları.",
     subtext: "Taner Tümer İnşaat; modern mimariyi, kaliteli malzeme seçimini ve güven veren uygulama disiplinini bir araya getirerek Adana’da seçkin yaşam projeleri geliştirir.",
     button1Text: "Projelerimizi İncele",
-    button1Link: "/projects",
+    button1Link: "/projeler",
     button2Text: "Bilgi Al",
-    button2Link: "/contact",
+    button2Link: "/iletisim",
   };
 
   // Consume content from editing data-layer
@@ -166,7 +166,7 @@ export function HomeHero({ intro = true, initialData }: HomeHeroProps) {
             >
               <IframeTransitionLink
                 className="inline-flex h-12 w-full sm:w-auto items-center justify-center bg-site-primary px-8 text-[11px] font-bold uppercase tracking-[0.24em] text-white transition-colors hover:bg-site-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-                href={data.button1Link === "#projects" ? "/projects" : data.button1Link}
+                href={data.button1Link === "#projects" || data.button1Link === "/projects" ? "/projeler" : data.button1Link}
               >
                 {data.button1Text}
               </IframeTransitionLink>

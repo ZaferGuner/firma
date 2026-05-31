@@ -9,62 +9,42 @@ export function Footer({ globalSettings }: { globalSettings?: any }) {
   const adminContext = useAdminEdit();
 
   return (
-    <footer className="bg-site-dark border-t border-[rgba(245,242,234,0.12)] py-12 pb-[88px] lg:pb-[88px] relative group">
+    <footer className="bg-[#2E302B] py-16 lg:py-24 relative group border-t border-[rgba(245,242,234,0.10)] pb-[140px] lg:pb-[120px]">
       {adminContext && !adminContext.isPreviewMode && (
         <AdminEditButton onClick={() => adminContext.openSectionEditor("global.settings")} label="Site Ayarları / Footer Düzenle" position="top-right" />
       )}
-      <div className="container mx-auto px-6 lg:px-12 xl:px-20">
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-24 mb-10">
-          
-          {/* BRAND & DESCRIPTION */}
-          <div className="w-full lg:w-1/3 flex flex-col gap-6">
-            <div className="flex flex-col">
-              <span className="text-xl font-medium tracking-tight text-site-dark-text uppercase">{globalSettings?.siteName || "Taner Tümer İnşaat"}</span>
-              <span className="text-xs tracking-[0.2em] text-site-dark-label uppercase mt-1">Mimari Proje Deneyimi</span>
-            </div>
-            <p className="text-sm leading-relaxed text-site-dark-body">
-              {globalSettings?.footerDescription || "Projelerimizi teknik disiplin, modern mimari çizgiler ve insan odaklı yaşam değerleri üzerine inşa ediyoruz."}
-            </p>
-          </div>
-
-          {/* NAVIGATION LINKS */}
-          <div className="w-full sm:w-1/2 lg:w-1/4 flex flex-col gap-4">
-            <span className="text-[10px] font-semibold uppercase tracking-widest text-site-dark-label mb-2">Keşfet</span>
-            <IframeTransitionLink href="/" className="text-sm text-site-dark-body hover:text-site-dark-text transition-colors">Ana Sayfa</IframeTransitionLink>
-            <IframeTransitionLink href="/about" className="text-sm text-site-dark-body hover:text-site-dark-text transition-colors">Hakkımızda</IframeTransitionLink>
-            <IframeTransitionLink href="/projects" className="text-sm text-site-dark-body hover:text-site-dark-text transition-colors">Projeler</IframeTransitionLink>
-            <IframeTransitionLink href="/press" className="text-sm text-site-dark-body hover:text-site-dark-text transition-colors">Basında Biz</IframeTransitionLink>
-            <IframeTransitionLink href="/#company" className="text-sm text-site-dark-body hover:text-site-dark-text transition-colors">Yaklaşım</IframeTransitionLink>
-            <IframeTransitionLink href="/#engineering" className="text-sm text-site-dark-body hover:text-site-dark-text transition-colors">Mühendislik</IframeTransitionLink>
-            <IframeTransitionLink href="/contact" className="text-sm text-site-dark-body hover:text-site-dark-text transition-colors">İletişim</IframeTransitionLink>
-          </div>
-
-          {/* CONTACT INFO */}
-          <div className="w-full sm:w-1/2 lg:w-1/4 flex flex-col gap-4">
-            <span className="text-[10px] font-semibold uppercase tracking-widest text-site-dark-label mb-2">İletişim</span>
-            <a href={contactInfo.phoneHref} className="text-sm text-site-dark-body hover:text-site-dark-text transition-colors">
-              {contactInfo.phone}
-            </a>
-            <a href={contactInfo.emailHref} className="text-sm text-site-dark-body hover:text-site-dark-text transition-colors">
-              {contactInfo.email}
-            </a>
-            <span className="text-sm text-site-dark-muted">
-              Adana / Türkiye
-            </span>
-          </div>
-
+      <div className="container mx-auto px-6 lg:px-12 xl:px-20 flex flex-col items-center text-center">
+        
+        {/* LOGO & TITLE */}
+        <div className="mb-8">
+          <span className="block text-2xl lg:text-3xl font-light tracking-[0.1em] text-[#F5F2EA] uppercase mb-2">
+            {globalSettings?.siteName || "Taner Tümer"}
+          </span>
+          <span className="block text-[10px] font-medium tracking-[0.3em] text-[#C8C2B6] uppercase">
+            Mimari Proje Deneyimi
+          </span>
         </div>
 
-        {/* BOTTOM ROW */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-[rgba(245,242,234,0.12)]">
-          <p className="text-xs text-site-dark-muted">
+        {/* DESCRIPTION */}
+        <p className="max-w-md mx-auto text-[13px] leading-relaxed text-[#C8C2B6] font-light mb-12">
+          {globalSettings?.footerDescription || "Projelerimizi teknik disiplin, modern mimari çizgiler ve insan odaklı yaşam değerleri üzerine inşa ediyoruz."}
+        </p>
+
+        {/* LINKS */}
+        <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-16">
+          <IframeTransitionLink href="/" className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#F5F2EA] hover:text-white transition-colors">Ana Sayfa</IframeTransitionLink>
+          <IframeTransitionLink href="/about" className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#F5F2EA] hover:text-white transition-colors">Hakkımızda</IframeTransitionLink>
+          <IframeTransitionLink href="/projeler" className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#F5F2EA] hover:text-white transition-colors">Projeler</IframeTransitionLink>
+          <IframeTransitionLink href="/contact" className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#F5F2EA] hover:text-white transition-colors">İletişim</IframeTransitionLink>
+        </div>
+
+        {/* COPYRIGHT */}
+        <div className="w-full max-w-2xl border-t border-[rgba(245,242,234,0.10)] pt-8 flex flex-col items-center">
+          <p className="text-[10px] uppercase tracking-[0.15em] text-[#C8C2B6]">
             {globalSettings?.footerCopyright || "© 2026 Taner Tümer İnşaat. Tüm hakları saklıdır."}
           </p>
-          <div className="flex gap-4">
-            <a href="/kurumsal" className="text-[10px] uppercase tracking-widest text-site-dark-muted hover:text-site-dark-text transition-colors">KVKK</a>
-            <a href="/kurumsal" className="text-[10px] uppercase tracking-widest text-site-dark-muted hover:text-site-dark-text transition-colors">Aydınlatma Metni</a>
-          </div>
         </div>
+        
       </div>
     </footer>
   );

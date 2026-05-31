@@ -130,6 +130,23 @@ export class PrismaAdapter implements IDataLayer {
       ctaText: projectData.ctaText || "Yeni yaşam alanınızı birlikte planlayalım.",
       ctaBtnText: projectData.ctaBtnText || "Bilgi Al",
       ctaBtnLink: projectData.ctaBtnLink || "/iletisim",
+
+      // Özel Proje Ön Gösterim Alanları
+      specialPreviewEnabled: projectData.specialPreviewEnabled ?? false,
+      specialPreviewNoIndex: projectData.specialPreviewNoIndex ?? true,
+      specialPreviewAccessMode: projectData.specialPreviewAccessMode || "public",
+      specialPreviewTitle: projectData.specialPreviewTitle || "",
+      specialPreviewSubtitle: projectData.specialPreviewSubtitle || "",
+      specialPreviewIntro: projectData.specialPreviewIntro || "",
+      specialPreviewStatus: projectData.specialPreviewStatus || "",
+      specialPreviewAccessLabel: projectData.specialPreviewAccessLabel || "",
+      specialPreviewSections: projectData.specialPreviewSections || {},
+      specialPreviewHighlights: projectData.specialPreviewHighlights || [],
+      specialPreviewBlueprintNotes: projectData.specialPreviewBlueprintNotes || [],
+      specialPreviewTextureNotes: projectData.specialPreviewTextureNotes || [],
+      specialPreviewCtaTitle: projectData.specialPreviewCtaTitle || "",
+      specialPreviewCtaText: projectData.specialPreviewCtaText || "",
+      specialPreviewCtaButtonLabel: projectData.specialPreviewCtaButtonLabel || "",
     };
 
     await prisma.projectDraft.create({ data: newDraftProject });

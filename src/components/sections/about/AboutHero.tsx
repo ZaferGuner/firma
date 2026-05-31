@@ -20,7 +20,7 @@ export function AboutHero() {
         }} 
       />
       <div className="absolute left-[15%] top-0 h-full w-[1px] bg-site-primary/30 z-0 pointer-events-none" />
-      <div className="absolute right-[20%] top-[10%] h-full w-[1px] bg-site-border/30 z-0 pointer-events-none" />
+      <div className="absolute right-[15%] top-0 h-full w-[1px] bg-site-primary/30 z-0 pointer-events-none" />
       
       {/* Ghost text in background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none z-0">

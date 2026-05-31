@@ -91,7 +91,13 @@ async function runMigration() {
         await tx.project.upsert({
           where: { slug: projectData.slug },
           update: projectData,
-          create: projectData,
+          create: {
+            ...projectData,
+            specialPreviewEnabled: projectData.specialPreviewEnabled ?? false,
+            specialPreviewNoIndex: projectData.specialPreviewNoIndex ?? true,
+            specialPreviewAccessMode: projectData.specialPreviewAccessMode || "public",
+            specialPreviewHighlights: projectData.specialPreviewHighlights || [],
+          },
         });
       }
       console.log("✅ Projects migrated");
@@ -102,7 +108,13 @@ async function runMigration() {
         await tx.projectDraft.upsert({
           where: { slug: projectData.slug },
           update: projectData,
-          create: projectData,
+          create: {
+            ...projectData,
+            specialPreviewEnabled: projectData.specialPreviewEnabled ?? false,
+            specialPreviewNoIndex: projectData.specialPreviewNoIndex ?? true,
+            specialPreviewAccessMode: projectData.specialPreviewAccessMode || "public",
+            specialPreviewHighlights: projectData.specialPreviewHighlights || [],
+          },
         });
       }
       console.log("✅ Project Drafts migrated");

@@ -52,18 +52,6 @@ export function PageIntroProvider({ children }: { children: React.ReactNode }) {
         if (typeof window !== "undefined") {
           document.documentElement.dataset.suppressPageIntro = "true";
         }
-        
-        const timer = setTimeout(() => {
-          setIsSuppressed(false);
-          suppressReasonRef.current = null;
-          if (typeof window !== "undefined") {
-            delete document.documentElement.dataset.suppressPageIntro;
-            sessionStorage.removeItem("tt-suppress-page-intro");
-            sessionStorage.removeItem("tt-suppress-page-intro-ts");
-          }
-        }, 1600);
-
-        return () => clearTimeout(timer);
       }
       previousPathRef.current = pathname;
     }

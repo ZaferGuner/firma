@@ -73,8 +73,31 @@ async function verifyEdgeToken(token: string, secret: string): Promise<boolean> 
 export async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   
+  // Maintenance Mode Check
+  const isMaintenanceMode = process.env.MAINTENANCE_MODE === "true";
+  if (isMaintenanceMode) {
+    const isExcludedFromMaintenance = 
+      pathname === "/bakim" ||
+      pathname.startsWith("/admin") ||
+      pathname.startsWith("/api/admin") ||
+      pathname.startsWith("/api/contact") ||
+      pathname.startsWith("/_next") ||
+      pathname === "/favicon.ico" ||
+      pathname.match(/\.(svg|png|jpg|jpeg|gif|webp)$/i);
+      
+    if (!isExcludedFromMaintenance) {
+      return NextResponse.redirect(new URL("/bakim", request.url));
+    }
+  }
+  
   // 1. Bypass authentication check specifically for the login API route
   if (pathname === "/api/admin/login") {
+    return NextResponse.next();
+  }
+
+  // Only apply admin authentication for admin routes
+  const requireAuth = pathname.startsWith("/admin") || pathname.startsWith("/api/admin");
+  if (!requireAuth) {
     return NextResponse.next();
   }
 
@@ -108,11 +131,13 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/admin/edit/:path*",
-    "/admin/inquiries/:path*",
-    "/admin/inquiries",
-    "/admin/settings/:path*",
-    "/admin/settings",
-    "/api/admin/:path*",
+    /*
+     * Match all request paths except for the ones starting with:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - images (public images)
+     */
+    "/((?!_next/static|_next/image|favicon.ico|images|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 };

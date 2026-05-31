@@ -50,6 +50,24 @@ interface DbSchema {
     ctaText?: string;
     ctaBtnText?: string;
     ctaBtnLink?: string;
+
+    // Özel Proje Ön Gösterim Alanları
+    specialPreviewEnabled?: boolean;
+    specialPreviewNoIndex?: boolean;
+    specialPreviewAccessMode?: string;
+    specialPreviewTitle?: string;
+    specialPreviewSubtitle?: string;
+    specialPreviewIntro?: string;
+    specialPreviewStatus?: string;
+    specialPreviewAccessLabel?: string;
+    specialPreviewSections?: any;
+    specialPreviewHighlights?: string[];
+    specialPreviewBlueprintNotes?: any;
+    specialPreviewTextureNotes?: any;
+    specialPreviewCtaTitle?: string;
+    specialPreviewCtaText?: string;
+    specialPreviewCtaButtonLabel?: string;
+
     updatedAt: string;
   }>;
   projectDrafts: Array<{
@@ -71,6 +89,24 @@ interface DbSchema {
     ctaText?: string;
     ctaBtnText?: string;
     ctaBtnLink?: string;
+
+    // Özel Proje Ön Gösterim Alanları
+    specialPreviewEnabled?: boolean;
+    specialPreviewNoIndex?: boolean;
+    specialPreviewAccessMode?: string;
+    specialPreviewTitle?: string;
+    specialPreviewSubtitle?: string;
+    specialPreviewIntro?: string;
+    specialPreviewStatus?: string;
+    specialPreviewAccessLabel?: string;
+    specialPreviewSections?: any;
+    specialPreviewHighlights?: string[];
+    specialPreviewBlueprintNotes?: any;
+    specialPreviewTextureNotes?: any;
+    specialPreviewCtaTitle?: string;
+    specialPreviewCtaText?: string;
+    specialPreviewCtaButtonLabel?: string;
+
     updatedAt: string;
   }>;
   pressItems: Array<{
@@ -307,6 +343,24 @@ export class JsonAdapter implements IDataLayer {
       ctaText: project.ctaText || "Yeni yaşam alanınızı birlikte planlayalım.",
       ctaBtnText: project.ctaBtnText || "Bilgi Al",
       ctaBtnLink: project.ctaBtnLink || "/iletisim",
+
+      // Özel Proje Ön Gösterim Alanları
+      specialPreviewEnabled: project.specialPreviewEnabled ?? false,
+      specialPreviewNoIndex: project.specialPreviewNoIndex ?? true,
+      specialPreviewAccessMode: project.specialPreviewAccessMode || "public",
+      specialPreviewTitle: project.specialPreviewTitle || "",
+      specialPreviewSubtitle: project.specialPreviewSubtitle || "",
+      specialPreviewIntro: project.specialPreviewIntro || "",
+      specialPreviewStatus: project.specialPreviewStatus || "",
+      specialPreviewAccessLabel: project.specialPreviewAccessLabel || "",
+      specialPreviewSections: project.specialPreviewSections || {},
+      specialPreviewHighlights: project.specialPreviewHighlights || [],
+      specialPreviewBlueprintNotes: project.specialPreviewBlueprintNotes || [],
+      specialPreviewTextureNotes: project.specialPreviewTextureNotes || [],
+      specialPreviewCtaTitle: project.specialPreviewCtaTitle || "",
+      specialPreviewCtaText: project.specialPreviewCtaText || "",
+      specialPreviewCtaButtonLabel: project.specialPreviewCtaButtonLabel || "",
+
       updatedAt: new Date().toISOString(),
     };
 

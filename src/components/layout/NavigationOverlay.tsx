@@ -78,7 +78,7 @@ export function NavigationOverlay({
         >
           <nav
             aria-label="Ana menü"
-            className="w-[calc(100vw_-_32px)] md:w-[clamp(360px,28vw,440px)] bg-site-dark py-[36px] px-8 sm:py-[44px] sm:px-12 text-site-dark-text shadow-[0_40px_120px_rgba(0,0,0,0.55)] will-change-transform border border-white/5 overflow-y-auto max-h-[calc(100svh_-_170px)] md:max-h-[620px] lg:max-h-[64vh]"
+            className="w-[calc(100vw_-_64px)] max-w-[320px] md:w-[clamp(360px,28vw,440px)] md:max-w-none bg-site-dark py-[28px] px-6 sm:py-[44px] sm:px-12 text-site-dark-text shadow-[0_40px_120px_rgba(0,0,0,0.55)] will-change-transform border border-white/5 overflow-y-auto max-h-[calc(100svh_-_170px)] md:max-h-[620px] lg:max-h-[64vh]"
             data-navigation-panel
             style={{
               opacity: visible ? 1 : 0,
@@ -131,7 +131,7 @@ export function NavigationOverlay({
                   return (
                     <li key={item.href} className="relative">
                       <IframeTransitionLink
-                        className={`relative block py-0.5 text-[clamp(24px,7vw,31px)] md:text-[clamp(26px,1.8vw,33px)] font-medium leading-[1.1] transition-all duration-300 hover:translate-x-1.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary pl-0 ${
+                        className={`relative block py-0.5 text-[clamp(20px,6vw,26px)] md:text-[clamp(26px,1.8vw,33px)] font-medium leading-[1.1] transition-all duration-300 hover:translate-x-1.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary pl-0 ${
                           isActive ? "text-site-dark-text" : "text-site-dark-muted hover:text-site-dark-text"
                         }`}
                         href={href}

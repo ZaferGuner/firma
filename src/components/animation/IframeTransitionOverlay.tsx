@@ -88,7 +88,7 @@ function BackgroundFreezeIframe({ src }: { src: string }) {
     <iframe
       key={src}
       src={src}
-      className="pointer-events-none fixed inset-0 z-[145] h-full w-full border-0 bg-[#050A0A]"
+      className="pointer-events-none fixed inset-0 z-[145] h-full w-full border-0 bg-transparent"
       tabIndex={-1}
       aria-hidden="true"
       style={{
@@ -191,43 +191,23 @@ export function IframeTransitionOverlay() {
           className="pointer-events-none fixed inset-0 z-[140] overflow-hidden"
           aria-hidden="true"
         >
-          {/* Backdrop */}
-          <motion.div
-            data-route-transition-overlay="backdrop"
-            className="absolute inset-0 bg-[#050A0A]/60"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: phase === "exit" ? 0 : 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: phase === "exit" ? timings.exit : timings.enter }}
-          />
-
           {/* Background freeze layer for popstate */}
           {showBackgroundFreeze && (
             <>
-              <div className="pointer-events-none fixed inset-0 z-[140] bg-[#050A0A]" />
               {backgroundIframeSrc && <BackgroundFreezeIframe src={backgroundIframeSrc} />}
             </>
           )}
 
-          {/* Intermediate overlay */}
-          <motion.div
-            data-route-transition-overlay="dim"
-            className="pointer-events-none fixed inset-0 z-[150] bg-[#050A0A]/55"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: phase === "exit" ? 0 : 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: phase === "exit" ? timings.exit : timings.enter }}
-          />
+
 
           <motion.div
-            className="pointer-events-none fixed inset-0 z-[160] overflow-hidden bg-[#050A0A]"
+            className="pointer-events-none fixed inset-0 z-[160] overflow-hidden bg-transparent"
             initial="hidden"
             animate={phase as keyof typeof panelVariants}
             exit="exit"
             variants={panelVariants}
             style={{
               transformOrigin: "center center",
-              boxShadow: "0 44px 160px rgba(0,0,0,0.65)",
               willChange: "transform, opacity, border-radius",
             }}
           >
@@ -237,7 +217,7 @@ export function IframeTransitionOverlay() {
                 ref={targetIframeRef}
                 key={targetIframeSrc}
                 src={targetIframeSrc}
-                className="h-full w-full border-0 bg-[#050A0A]"
+                className="h-full w-full border-0 bg-transparent"
                 onLoad={() => {
                   // Fallback: Notify after a timeout if the message is never received
                   // but we won't show the white flash
@@ -252,9 +232,7 @@ export function IframeTransitionOverlay() {
               />
             )}
 
-            {/* Subtle glass reflection to enforce the "window" look without whitening */}
-            <div className="pointer-events-none absolute inset-0 border border-dark-text/10" />
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.08),transparent_45%)]" />
+
           </motion.div>
         </div>
       )}
