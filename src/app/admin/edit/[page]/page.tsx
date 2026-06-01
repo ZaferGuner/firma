@@ -6,7 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { db } from "@/lib/data";
 import { ContactPageContent } from "@/components/contact/ContactPageContent";
 import { PressPageContent } from "@/components/press/PressPageContent";
-import { ServiceAreasSection } from "@/components/sections/ServiceAreasSection";
+import { projectsPageDefaults } from "@/data/projectsPage";
 
 type AdminEditPageRouteProps = {
   params: Promise<{
@@ -26,10 +26,20 @@ export default async function AdminEditPageRoute({ params }: AdminEditPageRouteP
   await db.seedDatabase();
 
   if (page === "projects") {
-    const projects = await db.getProjectsDrafts();
+    const [projects, heroData, ctaData] = await Promise.all([
+      db.getProjectsDrafts(),
+      db.getDraftContent("projects", "hero"),
+      db.getDraftContent("projects", "cta"),
+    ]);
     return (
       <main className="flex flex-col bg-background min-h-screen">
-        <ProjectsClient initialProjects={projects} />
+        <ProjectsClient
+          initialProjects={projects}
+          initialData={{
+            hero: heroData || projectsPageDefaults.hero,
+            cta: ctaData || projectsPageDefaults.cta,
+          }}
+        />
         <Footer />
       </main>
     );

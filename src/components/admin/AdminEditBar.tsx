@@ -15,11 +15,12 @@ import {
   X,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLenis } from "lenis/react";
 import { useAdminEdit } from "@/context/AdminEditContext";
 
 type AdminPage = {
   label: string;
-  value: "home" | "projects" | "contact" | "press" | "service-areas" | "inquiries" | "settings";
+  value: "home" | "projects" | "contact" | "press" | "inquiries" | "settings";
   href: string;
   disabled?: boolean;
 };
@@ -29,7 +30,6 @@ const adminPages: AdminPage[] = [
   { label: "Projeler", value: "projects", href: "/admin/edit/projects" },
   { label: "İletişim", value: "contact", href: "/admin/edit/contact" },
   { label: "Basında Biz", value: "press", href: "/admin/edit/press" },
-  { label: "Faaliyet Bölgeleri", value: "service-areas", href: "/admin/edit/service-areas" },
   { label: "Talepler", value: "inquiries", href: "/admin/inquiries" },
   { label: "Ayarlar / SEO", value: "settings", href: "/admin/settings" },
 ];
@@ -73,6 +73,7 @@ export function AdminEditBar() {
   const router = useRouter();
   const pathname = usePathname();
   const context = useAdminEdit();
+  const lenis = useLenis();
 
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
@@ -81,6 +82,22 @@ export function AdminEditBar() {
   const [modalAction, setModalAction] = useState<"discard" | "save" | null>(null);
 
   const drawerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isOpen && !showUnsavedModal) return;
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    lenis?.stop();
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+      lenis?.start();
+    };
+  }, [isOpen, showUnsavedModal, lenis]);
 
   // Close on Escape key
   useEffect(() => {
@@ -281,6 +298,9 @@ export function AdminEditBar() {
               role="dialog"
               aria-label="Admin kontrol paneli"
               aria-modal="true"
+              data-lenis-prevent
+              onWheel={(event) => event.stopPropagation()}
+              onTouchMove={(event) => event.stopPropagation()}
               variants={drawerVariants}
               initial="hidden"
               animate="visible"
@@ -335,6 +355,7 @@ export function AdminEditBar() {
               {/* Navigation */}
               <nav
                 className="flex-1 overflow-y-auto py-4"
+                data-lenis-prevent
                 style={{ borderBottom: "1px solid rgba(244, 241, 234, 0.08)" }}
               >
                 <div
@@ -421,10 +442,7 @@ export function AdminEditBar() {
                       style={{
                         background: "transparent",
                         border: "1px solid rgba(244, 241, 234, 0.12)",
-                        color:
-                          hasUnsavedChanges && saveStatus !== "saving"
-                            ? "#F4F1EA"
-                            : "#A8A197",
+                        color: hasUnsavedChanges ? "#F4F1EA" : "#A8A197",
                         cursor:
                           hasUnsavedChanges && saveStatus !== "saving"
                             ? "pointer"
@@ -448,7 +466,7 @@ export function AdminEditBar() {
                           hasUnsavedChanges && saveStatus !== "saving"
                             ? "#F4F1EA"
                             : "#1D211E",
-                        border: "1px solid transparent",
+                        border: "1px solid rgba(244, 241, 234, 0.12)",
                         color:
                           hasUnsavedChanges && saveStatus !== "saving"
                             ? "#111518"
@@ -479,7 +497,7 @@ export function AdminEditBar() {
                   className="w-full flex items-center gap-2 px-4 py-2.5 font-mono text-[10px] font-bold uppercase tracking-wider transition-colors cursor-pointer"
                   style={{
                     background: "transparent",
-                    border: "1px solid rgba(244, 241, 234, 0.08)",
+                    border: "1px solid rgba(244, 241, 234, 0.12)",
                     color: "#A8A197",
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = "#F4F1EA")}
@@ -545,7 +563,7 @@ export function AdminEditBar() {
                 className="px-5 py-2.5 transition-colors cursor-pointer disabled:cursor-wait disabled:opacity-60"
                 style={{
                   background: "transparent",
-                  border: "1px solid rgba(182, 161, 141, 0.3)",
+                  border: "1px solid rgba(182, 161, 141, 0.35)",
                   color: "#B6A18D",
                 }}
               >
@@ -558,6 +576,7 @@ export function AdminEditBar() {
                 className="px-5 py-2.5 transition-colors cursor-pointer disabled:cursor-wait disabled:opacity-70"
                 style={{
                   background: "#F4F1EA",
+                  border: "1px solid #F4F1EA",
                   color: "#111518",
                 }}
               >

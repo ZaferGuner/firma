@@ -20,9 +20,10 @@ const projectDescriptions: Record<string, string> = {
 
 interface FeaturedProjectsProps {
   initialData?: any;
+  initialProjects?: any[];
 }
 
-export function FeaturedProjects({ initialData }: FeaturedProjectsProps) {
+export function FeaturedProjects({ initialData, initialProjects }: FeaturedProjectsProps) {
   const adminContext = useAdminEdit();
   
   const content = useEditableContent("home.featuredIntro", initialData || {
@@ -32,8 +33,9 @@ export function FeaturedProjects({ initialData }: FeaturedProjectsProps) {
   });
 
   // Safe mapping of hero and secondary projects
-  const heroProject = projects.find((p) => p.slug === "villa-the-same") || projects[0];
-  const secondaryProjects = projects.filter((p) => p.slug !== heroProject.slug).slice(0, 2);
+  const projectSource = initialProjects && initialProjects.length > 0 ? initialProjects : projects;
+  const heroProject = projectSource.find((p) => p.slug === "villa-the-same") || projectSource[0];
+  const secondaryProjects = projectSource.filter((p) => p.slug !== heroProject.slug).slice(0, 2);
 
   const [heroImageError, setHeroImageError] = useState(false);
   const [secondaryImageErrors, setSecondaryImageErrors] = useState<Record<string, boolean>>({});
@@ -291,6 +293,76 @@ export function FeaturedProjects({ initialData }: FeaturedProjectsProps) {
           color: var(--fp-primary-hover);
         }
 
+        @media (max-width: 767px) {
+          #featured-projects-section .fp-card {
+            position: relative;
+            background: var(--fp-dark);
+            border-color: rgba(245, 242, 234, 0.14);
+          }
+
+          #featured-projects-section .fp-card-featured {
+            min-height: 430px;
+          }
+
+          #featured-projects-section .fp-card-secondary {
+            min-height: 340px;
+          }
+
+          #featured-projects-section .fp-card-link {
+            position: relative;
+            min-height: inherit;
+            justify-content: flex-end;
+            overflow: hidden;
+          }
+
+          #featured-projects-section .fp-featured-figure,
+          #featured-projects-section .fp-secondary-figure {
+            position: absolute;
+            inset: 0;
+            height: 100%;
+            aspect-ratio: auto;
+          }
+
+          #featured-projects-section .fp-featured-figure::after,
+          #featured-projects-section .fp-secondary-figure::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+              linear-gradient(180deg, rgba(32, 34, 36, 0.04) 0%, rgba(32, 34, 36, 0.35) 46%, rgba(32, 34, 36, 0.86) 100%),
+              linear-gradient(90deg, rgba(32, 34, 36, 0.54), transparent 48%);
+          }
+
+          #featured-projects-section .fp-featured-content,
+          #featured-projects-section .fp-secondary-content {
+            position: relative;
+            z-index: 1;
+            padding: 22px;
+          }
+
+          #featured-projects-section .fp-featured-title,
+          #featured-projects-section .fp-secondary-title {
+            color: var(--fp-dark-text);
+          }
+
+          #featured-projects-section .fp-summary {
+            color: rgba(245, 242, 234, 0.82);
+          }
+
+          #featured-projects-section .fp-meta {
+            color: rgba(245, 242, 234, 0.68);
+          }
+
+          #featured-projects-section .fp-cta-divider {
+            border-color: rgba(245, 242, 234, 0.18);
+          }
+
+          #featured-projects-section .fp-cta-label,
+          #featured-projects-section .fp-cta-icon {
+            color: var(--fp-dark-text);
+          }
+        }
+
         @media (min-width: 640px) {
           #fp-wrapper {
             padding-left: 24px;
@@ -507,7 +579,7 @@ export function FeaturedProjects({ initialData }: FeaturedProjectsProps) {
                                 {/* Feature Pills (max 2) */}
                                 {heroProject.features && heroProject.features.length > 0 && (
                                   <div className="flex flex-wrap gap-2 mt-2">
-                                    {heroProject.features.slice(0, 2).map((feat, fIdx) => (
+                                    {heroProject.features.slice(0, 2).map((feat: string, fIdx: number) => (
                                       <span key={fIdx} className="px-2.5 py-1 bg-[#EEEAE2] text-[#55564F] border border-[#E1DDD4] text-[10px] tracking-[0.12em] uppercase font-mono font-medium">
                                         {feat}
                                       </span>
@@ -629,7 +701,7 @@ export function FeaturedProjects({ initialData }: FeaturedProjectsProps) {
                                   {/* Feature Pills (max 2) */}
                                   {project.features && project.features.length > 0 && (
                                     <div className="flex flex-wrap gap-1.5 mt-1">
-                                      {project.features.slice(0, 2).map((feat, fIdx) => (
+                                      {project.features.slice(0, 2).map((feat: string, fIdx: number) => (
                                         <span key={fIdx} className="px-2 py-0.5 bg-[#EEEAE2] text-[#55564F] border border-[#E1DDD4] text-[10px] tracking-[0.12em] uppercase font-mono font-medium">
                                           {feat}
                                         </span>
@@ -669,7 +741,7 @@ export function FeaturedProjects({ initialData }: FeaturedProjectsProps) {
                 Diğer villa ve konut projelerimizi portföy sayfasında inceleyin.
               </p>
               <IframeTransitionLink
-                className="inline-flex items-center justify-center bg-[#74746A] hover:bg-[#68685F] text-[#FFFFFF] font-bold font-mono text-[11px] tracking-[0.2em] uppercase h-[48px] px-7 transition-colors duration-200 shrink-0 cursor-pointer"
+                className="inline-flex h-[48px] w-[calc(100vw-80px)] max-w-[340px] shrink-0 cursor-pointer items-center justify-center bg-[#74746A] px-7 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-[#FFFFFF] transition-colors duration-200 hover:bg-[#68685F] md:w-auto md:max-w-none"
                 href="/projects"
               >
                 Tüm Projeleri İncele

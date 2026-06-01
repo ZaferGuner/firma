@@ -8,11 +8,14 @@ import { useEditableContent } from "@/hooks/useEditableContent";
 import { contactInfo, contactPageDefaults } from "@/data/contact";
 
 type ContactMapProps = {
-  initialData?: any;
+  initialData?: Partial<typeof contactPageDefaults.info>;
 };
 
 export const ContactMap = ({ initialData }: ContactMapProps) => {
-  const data = useEditableContent("contact.info", initialData || contactPageDefaults.info);
+  const data = useEditableContent("contact.info", {
+    ...contactPageDefaults.info,
+    ...initialData,
+  });
 
   return (
     <EditableSection sectionKey="contact.info" label="Konum Bilgisi">
@@ -29,7 +32,7 @@ export const ContactMap = ({ initialData }: ContactMapProps) => {
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            className="absolute inset-0 z-10"
+            className="absolute -top-[64px] left-0 z-10 h-[calc(100%+64px)] w-full"
             title="Taner Tümer İnşaat Konum"
           />
 

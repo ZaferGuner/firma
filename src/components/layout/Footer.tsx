@@ -1,11 +1,16 @@
 "use client";
 
-import { contactInfo } from "@/data/contact";
 import { IframeTransitionLink } from "@/components/animation/IframeTransitionLink";
 import { useAdminEdit } from "@/context/AdminEditContext";
 import { AdminEditButton } from "@/components/admin/AdminEditButton";
 
-export function Footer({ globalSettings }: { globalSettings?: any }) {
+type FooterSettings = {
+  siteName?: string;
+  footerDescription?: string;
+  footerCopyright?: string;
+};
+
+export function Footer({ globalSettings }: { globalSettings?: FooterSettings }) {
   const adminContext = useAdminEdit();
 
   return (
@@ -43,6 +48,14 @@ export function Footer({ globalSettings }: { globalSettings?: any }) {
           <p className="text-[10px] uppercase tracking-[0.15em] text-[#C8C2B6]">
             {globalSettings?.footerCopyright || "© 2026 Taner Tümer İnşaat. Tüm hakları saklıdır."}
           </p>
+          <a
+            href="https://zaferguner.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 text-[10px] tracking-[0.15em] text-[#C8C2B6]/70 transition-colors hover:text-[#F5F2EA]"
+          >
+            DESIGNED BY ZAFER GÜNER
+          </a>
         </div>
         
       </div>

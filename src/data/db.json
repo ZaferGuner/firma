@@ -1,18 +1,18 @@
 {
   "adminUsers": [
     {
-      "id": "e90d0100-6cb1-42b4-a5c8-820d81a9b5b2",
+      "id": "c6eb102b-333c-475e-927a-27a63f8af789",
       "email": "admin@tanertumerinsaat.com",
-      "passwordHash": "9c210c140ddf99928bbccab770243f43:ce8268379e7ea1fe195dafc93f04c20b3fb28a686eb1aa0dc3da332681660c201f44e07ea4ca83ca576670148857d0b1c3b37e54baf8dae5f16a2588bb1c4221",
-      "createdAt": "2026-05-29T16:50:49.050Z"
+      "passwordHash": "a5b225a35cc7b75cf1ec51b2c113d140:8319d5865e520de0a15ca4d1fbf08b830e23dba55af00326508c60e5e4334e09ee03f2183165be90104204a2c5886790cc969b138676ad009ac74f2c6d01bdde",
+      "createdAt": "2026-05-31T22:53:31.532Z"
     }
   ],
   "contentSections": [
     {
-      "id": "e3bb0e5c-07d2-4656-b166-32e140f8e250",
+      "id": "bf6cfeef-2fa7-467c-9f17-0af70ffe858b",
       "pageKey": "home",
       "sectionKey": "hero",
-      "label": "home.hero section",
+      "label": "Home Page Hero Section",
       "dataJson": {
         "eyebrow": "SEÇKİN YAŞAM PROJELERİ",
         "title": "Düşünülmüş detaylarla<br className=\"hidden sm:inline\" /> inşa edilen yaşam alanları.",
@@ -22,10 +22,10 @@
         "button2Text": "Bilgi Al",
         "button2Link": "#contact"
       },
-      "updatedAt": "2026-05-30T12:33:12.600Z"
+      "updatedAt": "2026-05-31T22:53:31.533Z"
     },
     {
-      "id": "02a5bd81-4698-4801-a31c-ca9d18e0f880",
+      "id": "95fd9a28-a510-4819-8399-14142ff68357",
       "pageKey": "home",
       "sectionKey": "statement",
       "label": "Home Page Statement Section",
@@ -43,10 +43,10 @@
         "pillar3Title": "Detaylı Uygulama Disiplini",
         "pillar3Desc": "Projelerimizi kağıt üstündeki kusursuz detaylardan şantiyedeki milimetrik imalatlara kadar tavizsiz bir kontrol ve işçilik kalitesiyle hayata geçiriyoruz."
       },
-      "updatedAt": "2026-05-29T16:50:49.050Z"
+      "updatedAt": "2026-05-31T22:53:31.533Z"
     },
     {
-      "id": "90e9d3fe-9d5d-408e-af2b-81f29dfdfe84",
+      "id": "59f894c8-4182-4c7c-a272-3f989ee2cada",
       "pageKey": "home",
       "sectionKey": "finalCta",
       "label": "Home Page Final CTA Section",
@@ -59,10 +59,10 @@
         "secondaryButtonText": "Projelerimizi İncele",
         "secondaryButtonLink": "#projects"
       },
-      "updatedAt": "2026-05-29T16:50:49.050Z"
+      "updatedAt": "2026-05-31T22:53:31.533Z"
     },
     {
-      "id": "014ed58a-ca5d-46e7-8507-353a7cdcf3aa",
+      "id": "6cf7a581-a7d5-4836-ad81-b5ae85039db0",
       "pageKey": "contact",
       "sectionKey": "hero",
       "label": "Contact Page Hero Section",
@@ -72,10 +72,10 @@
         "highlight": "Konuşalım",
         "description": "Villa, konut ve yaşam alanı projeleriniz için bizimle iletişime geçebilir; detaylı bilgi, keşif ve proje görüşmesi talebinizi iletebilirsiniz."
       },
-      "updatedAt": "2026-05-29T16:50:49.051Z"
+      "updatedAt": "2026-05-31T22:53:31.533Z"
     },
     {
-      "id": "bc6892ac-61d9-47fb-8e35-dfcf32b48d22",
+      "id": "06b87234-0003-49e2-9bee-a31e8814025c",
       "pageKey": "contact",
       "sectionKey": "quickActions",
       "label": "Contact Quick Actions Section",
@@ -107,13 +107,13 @@
           }
         ]
       },
-      "updatedAt": "2026-05-29T16:50:49.051Z"
+      "updatedAt": "2026-05-31T22:53:31.533Z"
     },
     {
-      "id": "77985617-4ce5-49e3-9b4e-29fd6af6169e",
+      "id": "4163672c-49f0-4370-a282-6b96f616bb05",
       "pageKey": "contact",
       "sectionKey": "intent",
-      "label": "contact.intent section",
+      "label": "Contact Intent Cards Section",
       "dataJson": {
         "title": "Size Nasıl Yardımcı Olabiliriz?",
         "description": "İlgilendiğiniz konuyu seçerek formu hızlıca doldurabilirsiniz.",
@@ -152,10 +152,10 @@
           }
         ]
       },
-      "updatedAt": "2026-05-30T12:33:12.600Z"
+      "updatedAt": "2026-05-31T22:53:31.533Z"
     },
     {
-      "id": "29fd870d-6e6e-42e7-9800-cdd8d8474ab9",
+      "id": "d1ad01be-4611-41b0-828b-99efaa7ea565",
       "pageKey": "contact",
       "sectionKey": "info",
       "label": "Contact Info Section",
@@ -169,10 +169,10 @@
         "mapDescription": "Çukurova / Adana'daki ofisimize ulaşmak için yol tarifi alabilirsiniz.",
         "mapButtonText": "Haritada Aç"
       },
-      "updatedAt": "2026-05-29T16:50:49.051Z"
+      "updatedAt": "2026-05-31T22:53:31.533Z"
     },
     {
-      "id": "780f371c-ef35-4db9-baa1-65b08c42818a",
+      "id": "118fbeb8-4d52-47a2-93a8-54d2b6dabf96",
       "pageKey": "contact",
       "sectionKey": "form",
       "label": "Contact Form Section",
@@ -220,10 +220,10 @@
           "Diğer"
         ]
       },
-      "updatedAt": "2026-05-29T16:50:49.051Z"
+      "updatedAt": "2026-05-31T22:53:31.533Z"
     },
     {
-      "id": "233def68-644a-478f-989d-b9184c2e8adf",
+      "id": "8937dd94-cc90-4889-965c-f402a05e0f2b",
       "pageKey": "contact",
       "sectionKey": "process",
       "label": "Contact Process Section",
@@ -248,10 +248,10 @@
           }
         ]
       },
-      "updatedAt": "2026-05-29T16:50:49.051Z"
+      "updatedAt": "2026-05-31T22:53:31.533Z"
     },
     {
-      "id": "04dd1563-3e95-40b7-b735-f8a1230c8310",
+      "id": "8c3c02d3-20ff-4af1-b20e-42eff7aae6e3",
       "pageKey": "contact",
       "sectionKey": "cta",
       "label": "Contact CTA Section",
@@ -261,10 +261,10 @@
         "phoneButtonText": "Hemen Ara",
         "whatsappButtonText": "WhatsApp'tan Yaz"
       },
-      "updatedAt": "2026-05-29T16:50:49.051Z"
+      "updatedAt": "2026-05-31T22:53:31.533Z"
     },
     {
-      "id": "35b5ac9c-abbc-478a-a03f-5cfda2611d58",
+      "id": "9eb1b608-819a-426d-b846-8916e1ba5c70",
       "pageKey": "press",
       "sectionKey": "hero",
       "label": "Press Page Hero Section",
@@ -273,13 +273,13 @@
         "title": "Basında Biz",
         "description": "Taner Tümer İnşaat'ın projeleri, kurumsal duyuruları ve medya yansımalarını bu sayfada takip edebilirsiniz."
       },
-      "updatedAt": "2026-05-29T16:50:49.051Z"
+      "updatedAt": "2026-05-31T22:53:31.533Z"
     },
     {
-      "id": "ce2c84cc-dc93-4986-b4f7-adde2b546199",
+      "id": "7ef68fd9-2c3d-487e-9a60-6d3f59205a75",
       "pageKey": "press",
       "sectionKey": "empty",
-      "label": "press.empty section",
+      "label": "Press Empty State Section",
       "dataJson": {
         "eyebrow": "Medya Arşivi",
         "title": "Basın İçerikleri Yakında",
@@ -287,13 +287,13 @@
         "secondaryText": "Basın, iş birliği veya proje tanıtımı talepleriniz için bizimle iletişime geçebilirsiniz.",
         "buttonText": "İletişime Geç"
       },
-      "updatedAt": "2026-05-30T12:33:12.600Z"
+      "updatedAt": "2026-05-31T22:53:31.533Z"
     },
     {
-      "id": "a3184b2f-0ea9-483d-8c7e-d03510dbe92b",
+      "id": "a90ac33b-faf6-471d-95e7-ff298b434487",
       "pageKey": "press",
       "sectionKey": "mediaKit",
-      "label": "Press Media Kit Section",
+      "label": "press.mediaKit section",
       "dataJson": {
         "title": "Medya Kiti",
         "description": "Taner Tümer İnşaat marka kullanımı, proje görselleri ve kurumsal bilgi talepleri için bizimle iletişime geçebilirsiniz.",
@@ -317,10 +317,10 @@
         ],
         "requestText": "Talep Et"
       },
-      "updatedAt": "2026-05-29T16:50:49.051Z"
+      "updatedAt": "2026-05-31T22:53:31.624Z"
     },
     {
-      "id": "556c21fc-460f-43d1-a084-240e2c768195",
+      "id": "6573de98-4541-46af-a15c-99347c6ec30f",
       "pageKey": "press",
       "sectionKey": "projectsCta",
       "label": "Press Projects CTA Section",
@@ -329,10 +329,10 @@
         "description": "Villa The Same, Tümerhan Twins ve Tümerhan Towers projelerimizi detaylı olarak inceleyebilirsiniz.",
         "buttonText": "Projelerimize Git"
       },
-      "updatedAt": "2026-05-29T16:50:49.051Z"
+      "updatedAt": "2026-05-31T22:53:31.534Z"
     },
     {
-      "id": "4a6e2375-250f-4143-8233-f1fd41679908",
+      "id": "fc4e7b55-2e77-4e4b-92b4-ef0f6b308459",
       "pageKey": "press",
       "sectionKey": "finalCta",
       "label": "Press Final CTA Section",
@@ -341,10 +341,10 @@
         "description": "Proje tanıtımı, medya iş birliği veya kurumsal bilgi talepleriniz için ekibimizle iletişime geçebilirsiniz.",
         "buttonText": "Bilgi Al"
       },
-      "updatedAt": "2026-05-29T16:50:49.051Z"
+      "updatedAt": "2026-05-31T22:53:31.534Z"
     },
     {
-      "id": "4289e99e-b819-4a68-9891-8a49720e6db0",
+      "id": "8e2e438b-2a04-45e6-a6ef-7e53982ab026",
       "pageKey": "global",
       "sectionKey": "settings",
       "label": "Site Ayarları",
@@ -356,10 +356,10 @@
         "footerCopyright": "© 2026 Taner Tümer İnşaat. Tüm hakları saklıdır.",
         "defaultOgImage": "/og-image.jpg"
       },
-      "updatedAt": "2026-05-29T16:50:49.051Z"
+      "updatedAt": "2026-05-31T22:53:31.534Z"
     },
     {
-      "id": "00a7712f-6c3e-47f1-a611-f5a3f8243615",
+      "id": "4af45496-eba7-4926-98a5-f3deaf754c99",
       "pageKey": "seo",
       "sectionKey": "home",
       "label": "Ana Sayfa SEO",
@@ -369,10 +369,10 @@
         "ogImage": "",
         "noIndex": false
       },
-      "updatedAt": "2026-05-29T16:50:49.051Z"
+      "updatedAt": "2026-05-31T22:53:31.534Z"
     },
     {
-      "id": "f423fa7f-4458-49b8-b863-2cc662549656",
+      "id": "5f82b796-69e1-4d2f-8ff4-ff11f9c4fd8b",
       "pageKey": "seo",
       "sectionKey": "projects",
       "label": "Projeler SEO",
@@ -382,10 +382,10 @@
         "ogImage": "",
         "noIndex": false
       },
-      "updatedAt": "2026-05-29T16:50:49.051Z"
+      "updatedAt": "2026-05-31T22:53:31.534Z"
     },
     {
-      "id": "8077e4c9-f4b0-45fa-8d78-0e7c5ffe8555",
+      "id": "76124a5c-1b94-481d-b9a7-2b2a5a418989",
       "pageKey": "seo",
       "sectionKey": "contact",
       "label": "İletişim SEO",
@@ -395,10 +395,10 @@
         "ogImage": "",
         "noIndex": false
       },
-      "updatedAt": "2026-05-29T16:50:49.051Z"
+      "updatedAt": "2026-05-31T22:53:31.534Z"
     },
     {
-      "id": "686ddfe6-486a-4ec5-b86f-744a115b2b5f",
+      "id": "5b74444b-b7c7-4389-95e5-edfdb1827c71",
       "pageKey": "seo",
       "sectionKey": "press",
       "label": "Basında Biz SEO",
@@ -408,10 +408,10 @@
         "ogImage": "",
         "noIndex": false
       },
-      "updatedAt": "2026-05-29T16:50:49.051Z"
+      "updatedAt": "2026-05-31T22:53:31.534Z"
     },
     {
-      "id": "322bc50e-107b-42b1-a3a7-78a2ce21e1fa",
+      "id": "37bf891d-9b9f-4526-b410-81af98525adc",
       "pageKey": "seo",
       "sectionKey": "projectDefault",
       "label": "Proje Detay Fallback SEO",
@@ -421,10 +421,10 @@
         "ogImage": "",
         "noIndex": false
       },
-      "updatedAt": "2026-05-29T16:50:49.051Z"
+      "updatedAt": "2026-05-31T22:53:31.534Z"
     },
     {
-      "id": "6e883c5e-9bb9-411d-8506-b2baf818708f",
+      "id": "52b3cdb2-ebfb-41f6-a257-0ca5ed2406be",
       "pageKey": "home",
       "sectionKey": "regions",
       "label": "Faaliyet Bölgeleri",
@@ -433,7 +433,7 @@
         "sectionDescription": "Adana merkezli projelerimizde, şehrin farklı bölgelerinde proje geliştirme, arsa keşfi, mimari tasarım ve üst düzey uygulama süreçleri yürütüyoruz.",
         "districts": [
           {
-            "id": "b55efa19-0d87-48db-9f1e-75ab98c30af2",
+            "id": "a7205b0c-c60c-4287-bebb-4e9e297022b2",
             "district": "Seyhan",
             "title": "Seyhan",
             "status": "Aktif Bölge",
@@ -453,7 +453,7 @@
             "order": 1
           },
           {
-            "id": "ff157c52-00dd-4653-8146-289509584a7e",
+            "id": "66bfa31b-2342-483c-91a2-af804235d0cf",
             "district": "Çukurova",
             "title": "Çukurova",
             "status": "Aktif Bölge",
@@ -473,7 +473,7 @@
             "order": 1
           },
           {
-            "id": "29db7b3e-41d5-4ff7-8d96-71fb854ff097",
+            "id": "aa57de4e-e1a7-4a0a-8564-37294d13e4f6",
             "district": "Yüreğir",
             "title": "Yüreğir",
             "status": "Aktif Bölge",
@@ -493,7 +493,7 @@
             "order": 1
           },
           {
-            "id": "a63600b4-1260-48c0-bc4d-86b43baad74e",
+            "id": "b8f62df3-35bc-4f85-abd3-b8b3631da636",
             "district": "Sarıçam",
             "title": "Sarıçam",
             "status": "Aktif Bölge",
@@ -513,7 +513,7 @@
             "order": 1
           },
           {
-            "id": "ed534ca4-36f0-45be-8c35-85601a399f27",
+            "id": "44ecfb1d-f060-41c8-885c-2f008260978a",
             "district": "Ceyhan",
             "title": "Ceyhan",
             "status": "Bölgesel Hizmet",
@@ -533,7 +533,7 @@
             "order": 1
           },
           {
-            "id": "e25e1f25-0c97-4f20-9741-064f71247f31",
+            "id": "d4cfe489-361a-40e6-9e11-cd6de615464b",
             "district": "Kozan",
             "title": "Kozan",
             "status": "Bölgesel Hizmet",
@@ -553,7 +553,7 @@
             "order": 1
           },
           {
-            "id": "a5e36a61-bc4f-4118-85c4-786e37159174",
+            "id": "f21bb25f-dd5d-4a38-b085-9cfa43b79857",
             "district": "Karataş",
             "title": "Karataş",
             "status": "Proje Bazlı Hizmet",
@@ -573,7 +573,7 @@
             "order": 1
           },
           {
-            "id": "5df19fdf-4e1a-4be7-9ce0-b15b19397c2a",
+            "id": "2fa41a04-4453-4517-9bed-d1a766095e96",
             "district": "Yumurtalık",
             "title": "Yumurtalık",
             "status": "Proje Bazlı Hizmet",
@@ -594,7 +594,7 @@
           }
         ]
       },
-      "updatedAt": "2026-05-29T16:50:49.051Z"
+      "updatedAt": "2026-05-31T22:53:31.534Z"
     }
   ],
   "contentDrafts": [],
@@ -623,7 +623,7 @@
       "ctaText": "Yeni yaşam alanınızı birlikte planlayalım.",
       "ctaBtnText": "Bilgi Al",
       "ctaBtnLink": "/iletisim",
-      "updatedAt": "2026-05-30T12:33:12.600Z"
+      "updatedAt": "2026-05-31T22:53:31.534Z"
     },
     {
       "id": "tumerhan-twins",
@@ -662,7 +662,7 @@
       "ctaText": "Yeni yaşam alanınızı birlikte planlayalım.",
       "ctaBtnText": "Bilgi Al",
       "ctaBtnLink": "/iletisim",
-      "updatedAt": "2026-05-29T16:50:49.051Z"
+      "updatedAt": "2026-05-31T22:53:31.534Z"
     },
     {
       "id": "tumerhan-towers",
@@ -704,12 +704,12 @@
       "ctaText": "Yeni yaşam alanınızı birlikte planlayalım.",
       "ctaBtnText": "Bilgi Al",
       "ctaBtnLink": "/iletisim",
-      "updatedAt": "2026-05-30T12:33:12.600Z"
+      "updatedAt": "2026-05-31T22:53:31.624Z"
     }
   ],
   "projectDrafts": [],
   "pressItems": [],
   "pressDrafts": [],
   "inquiries": [],
-  "updatedAt": "2026-05-30T12:33:12.600Z"
+  "updatedAt": "2026-05-31T22:53:31.624Z"
 }

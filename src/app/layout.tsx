@@ -20,17 +20,19 @@ const geistMono = Geist_Mono({
 });
 
 import { db } from "@/lib/data";
+import { getSiteSettingsMap, getStringSetting } from "@/lib/db/settings";
 
 export async function generateMetadata(): Promise<Metadata> {
   const globalSettings = await db.getSectionContent("global", "settings") || { siteName: "Taner Tümer İnşaat" };
   const seoHome = await db.getSectionContent("seo", "home") || { title: "Mimari Proje Deneyimi", description: "Taner Tümer İnşaat için premium, teknolojik ve mimari odaklı proje deneyimi." };
+  const siteSettings = await getSiteSettingsMap();
 
   return {
     title: {
       template: `%s | ${globalSettings.siteName}`,
-      default: `${seoHome.title} | ${globalSettings.siteName}`,
+      default: `${getStringSetting(siteSettings, "seo_default_title", seoHome.title)} | ${globalSettings.siteName}`,
     },
-    description: seoHome.description,
+    description: getStringSetting(siteSettings, "seo_default_description", seoHome.description),
   };
 }
 

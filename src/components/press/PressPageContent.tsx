@@ -31,7 +31,7 @@ export function PressPageContent({ initialData, initialItems = [] }: PressPageCo
           <button
             onClick={() => adminContext.openSectionEditor("new-press-item")}
             type="button"
-            className="flex items-center gap-2 bg-dark-bg text-dark-text px-8 py-3.5 font-mono text-[10px] font-bold uppercase tracking-[0.24em] transition-colors hover:bg-[#C5162E] cursor-pointer shadow-lg"
+            className="admin-blue-button flex items-center gap-2 bg-dark-bg px-8 py-3.5 font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-dark-text transition-colors hover:bg-[var(--color-primary)] cursor-pointer shadow-lg"
           >
             + Yeni Basın İçeriği Ekle
           </button>

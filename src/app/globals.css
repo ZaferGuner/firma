@@ -115,6 +115,88 @@ body {
   --sb-size: 10px;
 }
 
+.admin-blue-button {
+  background: #2563EB !important;
+  border: 1px solid #2563EB !important;
+  color: #FFFFFF !important;
+}
+
+.admin-blue-button,
+[data-admin-edit-button],
+[class*="group/editable"] > [class*="right-4"][class*="top-4"] > button {
+  background: #2563EB !important;
+  border: 1px solid #2563EB !important;
+  color: #FFFFFF !important;
+}
+
+.admin-blue-button:hover {
+  background: #1D4ED8 !important;
+  border-color: #1D4ED8 !important;
+  color: #FFFFFF !important;
+}
+
+.admin-blue-button:hover,
+[data-admin-edit-button]:hover,
+[class*="group/editable"] > [class*="right-4"][class*="top-4"] > button:hover {
+  background: #1D4ED8 !important;
+  border-color: #1D4ED8 !important;
+  color: #FFFFFF !important;
+}
+
+[data-admin-edit-overlay],
+[class*="group/editable"] > [class*="right-4"][class*="top-4"] {
+  z-index: 10002 !important;
+}
+
+.admin-edit-drawer {
+  overscroll-behavior: contain;
+}
+
+.admin-edit-drawer-scroll {
+  overscroll-behavior: contain;
+  scrollbar-color: var(--color-primary) #E5E7EB;
+  scrollbar-width: thin;
+}
+
+.admin-edit-drawer input,
+.admin-edit-drawer textarea,
+.admin-edit-drawer select {
+  background: #FFFFFF !important;
+  border-color: #D1D5DB !important;
+  color: #111827 !important;
+  caret-color: var(--color-primary);
+}
+
+.admin-edit-drawer input::placeholder,
+.admin-edit-drawer textarea::placeholder {
+  color: #9CA3AF !important;
+}
+
+.admin-edit-drawer input:focus,
+.admin-edit-drawer textarea:focus,
+.admin-edit-drawer select:focus {
+  border-color: var(--color-primary) !important;
+  outline: none !important;
+}
+
+.admin-edit-drawer button {
+  background: #2563EB !important;
+  border-color: #2563EB !important;
+  color: #FFFFFF !important;
+}
+
+.admin-edit-drawer button:hover {
+  background: #1D4ED8 !important;
+  border-color: #1D4ED8 !important;
+}
+
+.admin-edit-drawer button:disabled {
+  background: #93C5FD !important;
+  border-color: #93C5FD !important;
+  color: rgba(255, 255, 255, 0.82) !important;
+  opacity: 0.68;
+}
+
 body::-webkit-scrollbar {
   width: var(--sb-size)
 }
@@ -254,5 +336,3 @@ html[data-route-transition="committing"] iframe {
   transition-property: transform !important;
   animation: none !important;
 }
-
-

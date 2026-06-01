@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { db } from "@/lib/data";
+import { createInquiry } from "@/lib/db/inquiries";
 
 // Simple in-memory rate limiting map for basic spam protection
 const rateLimitMap = new Map<string, { count: number; firstRequestTime: number }>();
@@ -89,15 +89,21 @@ export async function POST(request: Request) {
     const cleanSubject = escapeHTML(subject.trim());
     const cleanMessage = escapeHTML(message?.trim() || "");
 
-    // Save to database
-    await db.addInquiry({
+    const combinedMessage = [
+      `Konu: ${cleanSubject}`,
+      `Proje türü: ${validProjectType}`,
+      `Bölge: ${validDistrict}`,
+      cleanMessage ? `Mesaj: ${cleanMessage}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    await createInquiry({
       name: cleanName,
       phone: cleanPhone,
       email: cleanEmail,
-      subject: cleanSubject,
-      projectType: validProjectType,
-      district: validDistrict,
-      message: cleanMessage,
+      message: combinedMessage,
+      source_page: "contact-form",
     });
 
     return NextResponse.json({ success: true, message: "Talebiniz başarıyla alındı. En kısa sürede sizinle iletişime geçeceğiz." });

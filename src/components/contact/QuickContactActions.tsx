@@ -42,7 +42,7 @@ export const QuickContactActions = ({ initialData }: QuickContactActionsProps) =
     <EditableSection sectionKey="contact.quickActions" label="Hızlı İletişim">
       <section className="w-full pb-16 md:pb-24 bg-site-bg">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {actions.map((action: any, index: number) => {
               const meta = actionMeta[action.key as keyof typeof actionMeta] || actionMeta.phone;
               const Icon = meta.icon;
@@ -58,17 +58,17 @@ export const QuickContactActions = ({ initialData }: QuickContactActionsProps) =
                     href={meta.href}
                     target={meta.target}
                     rel={meta.target === "_blank" ? "noopener noreferrer" : undefined}
-                    className="group flex flex-col justify-between h-full p-5 bg-site-surface border border-site-border hover:border-[#CFC7BA] transition-colors duration-300 rounded-none hover:shadow-[0_8px_24px_rgba(46,48,43,0.03)]"
+                    className="group flex h-full flex-col justify-between rounded-none border border-site-border bg-site-surface p-4 transition-colors duration-300 hover:border-[#CFC7BA] hover:shadow-[0_8px_24px_rgba(46,48,43,0.03)] sm:p-5"
                   >
                     <div>
                       <div className="w-8 h-8 rounded-full bg-site-soft flex items-center justify-center mb-4">
                         <Icon className="w-4 h-4 text-site-text" />
                       </div>
-                      <h3 className="text-[15px] font-semibold text-site-text mb-1.5">{action.title}</h3>
-                      <p className="text-site-muted text-[13px] leading-relaxed mb-4">{action.text}</p>
+                      <h3 className="text-sm font-semibold text-site-text mb-1.5 sm:text-[15px]">{action.title}</h3>
+                      <p className="text-site-muted text-xs leading-relaxed mb-4 sm:text-[13px]">{action.text}</p>
                     </div>
 
-                    <div className="flex items-center text-xs font-semibold uppercase tracking-wider text-site-text group-hover:text-site-accent transition-colors">
+                    <div className="flex items-center text-[10px] font-semibold uppercase tracking-[0.08em] text-site-text transition-colors group-hover:text-site-accent sm:text-xs sm:tracking-wider">
                       {action.linkText}
                       <ArrowRight className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-1 transition-transform duration-300" />
                     </div>

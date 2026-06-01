@@ -76,7 +76,7 @@ export function TrustSection({ initialData }: TrustSectionProps) {
           </div>
 
           {/* Right Column: Visual */}
-          <Reveal className="relative overflow-hidden bg-neutral-200" delay={0.1}>
+          <Reveal className="relative hidden overflow-hidden bg-neutral-200 md:block" delay={0.1}>
             <div className="relative aspect-[4/5] w-full">
               <Image
                 alt="Mimari cephe ve dayanıklı yapı detayları"

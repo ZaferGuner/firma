@@ -1,143 +1,111 @@
+import { createServerClient } from "@supabase/ssr";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { getSupabaseConfig, isSupabaseConfigured } from "@/lib/supabase/config";
+import type { Database } from "@/lib/supabase/types";
 
-/**
- * Base64url to Uint8Array decoder for edge runtime
- */
-function base64urlToBytes(base64url: string): Uint8Array {
-  const base64 = base64url.replace(/-/g, "+").replace(/_/g, "/");
-  const pad = base64.length % 4;
-  const padded = pad ? base64 + "=".repeat(4 - pad) : base64;
-  const binary = atob(padded);
-  const bytes = new Uint8Array(binary.length);
-  for (let i = 0; i < binary.length; i++) {
-    bytes[i] = binary.charCodeAt(i);
-  }
-  return bytes;
-}
-
-/**
- * Cryptographic Edge-compatible JWT/Session Verification
- */
-async function verifyEdgeToken(token: string, secret: string): Promise<boolean> {
-  try {
-    const parts = token.split(".");
-    if (parts.length !== 3) {
-      return false;
-    }
-    
-    const [header, body, signature] = parts;
-    const textToSign = `${header}.${body}`;
-
-    const encoder = new TextEncoder();
-    const keyData = encoder.encode(secret);
-    
-    const cryptoKey = await crypto.subtle.importKey(
-      "raw",
-      keyData,
-      { name: "HMAC", hash: "SHA-256" },
-      false,
-      ["verify", "sign"]
-    );
-
-    const signatureBytes = base64urlToBytes(signature);
-    const dataBytes = encoder.encode(textToSign);
-
-    // Verify HMAC-SHA256 signature
-    const isValid = await crypto.subtle.verify(
-      "HMAC",
-      cryptoKey,
-      signatureBytes as any,
-      dataBytes as any
-    );
-
-    if (!isValid) {
-      return false;
-    }
-
-    // Parse payload details
-    const payloadStr = atob(body.replace(/-/g, "+").replace(/_/g, "/"));
-    const payload = JSON.parse(payloadStr);
-
-    // Check expiration timestamp
-    if (Date.now() >= payload.exp) {
-      return false;
-    }
-
-    return true;
-  } catch {
-    return false;
-  }
+function isStaticAsset(pathname: string) {
+  return (
+    pathname.startsWith("/_next") ||
+    pathname === "/favicon.ico" ||
+    pathname.startsWith("/images") ||
+    /\.(?:svg|png|jpg|jpeg|gif|webp|avif|ico|css|js|map|txt|xml)$/i.test(pathname)
+  );
 }
 
 export async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  
-  // Maintenance Mode Check
+
+  if (isStaticAsset(pathname)) {
+    return NextResponse.next();
+  }
+
   const isMaintenanceMode = process.env.MAINTENANCE_MODE === "true";
   if (isMaintenanceMode) {
-    const isExcludedFromMaintenance = 
+    const isExcluded =
       pathname === "/bakim" ||
       pathname.startsWith("/admin") ||
       pathname.startsWith("/api/admin") ||
-      pathname.startsWith("/api/contact") ||
-      pathname.startsWith("/_next") ||
-      pathname === "/favicon.ico" ||
-      pathname.match(/\.(svg|png|jpg|jpeg|gif|webp)$/i);
-      
-    if (!isExcludedFromMaintenance) {
+      pathname.startsWith("/api/contact");
+
+    if (!isExcluded) {
       return NextResponse.redirect(new URL("/bakim", request.url));
     }
   }
-  
-  // 1. Bypass authentication check specifically for the login API route
-  if (pathname === "/api/admin/login") {
+
+  const isAdminRoute = pathname.startsWith("/admin") && pathname !== "/admin/login";
+  const isAdminApiRoute = pathname.startsWith("/api/admin") && pathname !== "/api/admin/login";
+
+  if (!isAdminRoute && !isAdminApiRoute && pathname !== "/admin/login") {
     return NextResponse.next();
   }
 
-  // Only apply admin authentication for admin routes
-  const requireAuth = pathname.startsWith("/admin") || pathname.startsWith("/api/admin");
-  if (!requireAuth) {
-    return NextResponse.next();
-  }
-
-  const tokenCookie = request.cookies.get("admin_session")?.value;
-  const loginUrl = new URL("/admin/login", request.url);
-  const isApi = pathname.startsWith("/api/");
-
-  if (!tokenCookie) {
-    if (isApi) {
-      return NextResponse.json({ error: "Unauthorized Session Missing" }, { status: 401 });
+  if (!isSupabaseConfigured()) {
+    if (isAdminApiRoute) {
+      return NextResponse.json({ error: "Supabase yapılandırması eksik." }, { status: 503 });
     }
-    return NextResponse.redirect(loginUrl);
+
+    return pathname === "/admin/login"
+      ? NextResponse.next()
+      : NextResponse.redirect(new URL("/admin/login", request.url));
   }
 
-  // Read environment variable secret key
-  const secretKey = process.env.AUTH_SECRET || "fallback_auth_secret_if_undefined_dev";
+  const { url, anonKey } = getSupabaseConfig();
+  const response = NextResponse.next({ request });
 
-  const isValid = await verifyEdgeToken(tokenCookie, secretKey);
-  if (!isValid) {
-    if (isApi) {
-      return NextResponse.json({ error: "Unauthorized Token Compromised or Expired" }, { status: 401 });
+  const supabase = createServerClient<Database>(url, anonKey, {
+    cookies: {
+      getAll() {
+        return request.cookies.getAll();
+      },
+      setAll(cookiesToSet) {
+        cookiesToSet.forEach(({ name, value, options }) => {
+          request.cookies.set(name, value);
+          response.cookies.set(name, value, options);
+        });
+      },
+    },
+  });
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    if (pathname === "/admin/login") {
+      return response;
     }
-    const response = NextResponse.redirect(loginUrl);
-    // Flush invalid session cookie
-    response.cookies.delete("admin_session");
-    return response;
+
+    if (isAdminApiRoute) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    return NextResponse.redirect(new URL("/admin/login", request.url));
   }
 
-  return NextResponse.next();
+  const { data: adminUser } = await supabase
+    .from("admin_users")
+    .select("id")
+    .eq("user_id", user.id)
+    .maybeSingle();
+
+  if (!adminUser) {
+    if (isAdminApiRoute) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
+    return pathname === "/admin/login"
+      ? response
+      : NextResponse.redirect(new URL("/admin/login", request.url));
+  }
+
+  if (pathname === "/admin/login") {
+    return NextResponse.redirect(new URL("/admin", request.url));
+  }
+
+  return response;
 }
 
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - images (public images)
-     */
-    "/((?!_next/static|_next/image|favicon.ico|images|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
-  ],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|images).*)"],
 };

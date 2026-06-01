@@ -8,8 +8,15 @@ export async function POST() {
     await db.commitDrafts();
     revalidatePath("/");
     revalidatePath("/projeler");
+    revalidatePath("/projects");
     revalidatePath("/iletisim");
     revalidatePath("/basinda-biz");
+    revalidatePath("/press");
+    const projects = await db.getProjects(false);
+    projects.forEach((project) => {
+      revalidatePath(`/projeler/${project.slug}`);
+      revalidatePath(`/projects/${project.slug}`);
+    });
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Publish commit API error:", error);

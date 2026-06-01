@@ -1,6 +1,8 @@
 import { db } from "@/lib/data";
+import { getPublishedProjectsWithFallback } from "@/lib/db/projects";
 import { ProjectsClient } from "./_components/ProjectsClient";
 import { Footer } from "@/components/layout/Footer";
+import { projectsPageDefaults } from "@/data/projectsPage";
 
 export const dynamic = "force-dynamic";
 
@@ -17,12 +19,22 @@ export default async function ProjectsPage() {
   await db.seedDatabase();
 
   // 2. Fetch only published projects for visitors
-  const publishedProjects = await db.getProjects(true);
-  const globalSettings = await db.getSectionContent("global", "settings");
+  const [publishedProjects, globalSettings, heroData, ctaData] = await Promise.all([
+    getPublishedProjectsWithFallback(),
+    db.getSectionContent("global", "settings"),
+    db.getSectionContent("projects", "hero"),
+    db.getSectionContent("projects", "cta"),
+  ]);
 
   return (
     <main className="flex min-h-screen flex-col bg-background">
-      <ProjectsClient initialProjects={publishedProjects} />
+      <ProjectsClient
+        initialProjects={publishedProjects}
+        initialData={{
+          hero: heroData || projectsPageDefaults.hero,
+          cta: ctaData || projectsPageDefaults.cta,
+        }}
+      />
       <Footer globalSettings={globalSettings} />
     </main>
   );

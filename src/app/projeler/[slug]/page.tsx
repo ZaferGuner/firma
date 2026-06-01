@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { db } from "@/lib/data";
+import { getProjectBySlugWithFallback } from "@/lib/db/projects";
 import { Footer } from "@/components/layout/Footer";
 import { ProjectDetailHero } from "./_components/ProjectDetailHero";
 import { ProjectInfo } from "./_components/ProjectInfo";
@@ -14,7 +15,7 @@ type Props = {
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   await db.seedDatabase();
-  const project = await db.getProjectBySlug(slug);
+  const project = await getProjectBySlugWithFallback(slug);
 
   const defaultSeo = await db.getSectionContent("seo", "projectDefault") || { title: "Proje Detayı", description: "Taner Tümer İnşaat özel proje detayları." };
 
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: Props) {
 export default async function ProjectDetailPage({ params }: Props) {
   const { slug } = await params;
   await db.seedDatabase();
-  const project = await db.getProjectBySlug(slug);
+  const project = await getProjectBySlugWithFallback(slug);
   const globalSettings = await db.getSectionContent("global", "settings");
 
   if (!project || !project.published) {

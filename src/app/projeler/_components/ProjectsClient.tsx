@@ -12,9 +12,13 @@ import { motion } from "motion/react";
 
 interface ProjectsClientProps {
   initialProjects?: any[];
+  initialData?: {
+    hero?: any;
+    cta?: any;
+  };
 }
 
-export function ProjectsClient({ initialProjects }: ProjectsClientProps) {
+export function ProjectsClient({ initialProjects, initialData }: ProjectsClientProps) {
   const [activeFilter, setActiveFilter] = useState("Tümü");
   const [selectedProject, setSelectedProject] = useState<any | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -61,6 +65,11 @@ export function ProjectsClient({ initialProjects }: ProjectsClientProps) {
   });
 
   const handleSelectProject = (project: any) => {
+    if (isAdmin) {
+      adminContext?.openSectionEditor(`project.${project.slug}`);
+      return;
+    }
+
     setSelectedProject(project);
     setIsDrawerOpen(true);
   };
@@ -74,15 +83,15 @@ export function ProjectsClient({ initialProjects }: ProjectsClientProps) {
         style={{ willChange: "transform" }}
         className="flex flex-col flex-1 bg-[#f4f2ed] shadow-lg [--drawer-shift:-100%] sm:[--drawer-shift:-540px] md:[--drawer-shift:-600px]"
       >
-        <ProjectsHero />
+        <ProjectsHero initialData={initialData?.hero} />
 
         {/* Admin Insertion Area */}
         {isAdmin && (
           <div className="flex justify-center pt-8 bg-[#f4f2ed]">
             <button
-              onClick={() => adminContext.openSectionEditor("new-project")}
+              onClick={() => adminContext?.openSectionEditor("new-project")}
               type="button"
-              className="flex items-center gap-2 bg-[#111111] text-white px-8 py-3.5 font-mono text-[10px] font-bold uppercase tracking-[0.24em] transition-colors hover:bg-[#C5162E] cursor-pointer shadow-lg"
+              className="admin-blue-button flex items-center gap-2 bg-dark-bg px-8 py-3.5 font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-dark-text transition-colors hover:bg-[var(--color-primary)] cursor-pointer shadow-lg"
             >
               + Yeni Proje Ekle
             </button>
@@ -102,7 +111,7 @@ export function ProjectsClient({ initialProjects }: ProjectsClientProps) {
         />
         
         {/* Call To Action Rail */}
-        <ProjectsCTA />
+        <ProjectsCTA initialData={initialData?.cta} />
       </motion.div>
 
       {/* Side Slide-in Details Drawer */}

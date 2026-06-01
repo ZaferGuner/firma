@@ -65,7 +65,7 @@ export function ServiceAreasSection({ initialData }: { initialData?: any }) {
         <div className="mt-16 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch lg:gap-16 lg:mt-24">
           
           {/* Left Side: District Details Panel (Solid Surface - No Glass) */}
-          <div className="flex flex-col justify-between lg:h-[640px]">
+          <div className="order-2 flex flex-col justify-between lg:order-1 lg:h-[640px]">
             <Reveal className="h-full flex flex-col justify-start">
               <div className="mb-6 flex items-center gap-2">
                 <span className="flex h-2 w-2 items-center justify-center rounded-none bg-site-accent">
@@ -169,7 +169,7 @@ export function ServiceAreasSection({ initialData }: { initialData?: any }) {
           </div>
 
           {/* Right Side: Map Container (Legible & Sharp) */}
-          <div className="relative flex flex-col justify-center rounded-none border border-[rgba(245,242,234,0.12)] bg-site-dark-surface lg:h-[640px] min-h-[420px] md:min-h-[500px]">
+          <div className="relative order-1 flex min-h-[420px] flex-col justify-center rounded-none border border-[rgba(245,242,234,0.12)] bg-site-dark-surface md:min-h-[500px] lg:order-2 lg:h-[640px]">
             <AdanaMapSvg
               onDistrictSelect={handleDistrictSelect}
               selectedDistrict={selectedDistrict}

@@ -1,17 +1,22 @@
-import React from "react";
-import { db } from "@/lib/data";
-import { Metadata } from "next";
-import { InquiriesClient } from "./InquiriesClient";
+import { AdminShell } from "@/components/admin/AdminShell";
+import { InquiryTable } from "@/components/admin/InquiryTable";
+import { requireAdmin } from "@/lib/auth/admin";
+import type { InquiryRow } from "@/lib/supabase/types";
 
-export const metadata: Metadata = {
-  title: "Gelen Talepler | Taner Tümer İnşaat Admin",
-};
-
-// Next.js config to ensure fresh data since we mutate JSON directly without standard revalidation
 export const dynamic = "force-dynamic";
 
-export default async function InquiriesPage() {
-  const inquiries = await db.getInquiries();
+export default async function AdminInquiriesPage() {
+  const { supabase } = await requireAdmin();
+  const { data, error } = await supabase
+    .from("inquiries")
+    .select("*")
+    .order("created_at", { ascending: false });
 
-  return <InquiriesClient initialInquiries={inquiries} />;
+  if (error) throw new Error(error.message);
+
+  return (
+    <AdminShell title="Inquiries" description="İletişim formundan gelen talepleri yönetin, durum değiştirin veya arşivleyin.">
+      <InquiryTable inquiries={(data || []) as InquiryRow[]} />
+    </AdminShell>
+  );
 }

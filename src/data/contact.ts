@@ -10,7 +10,7 @@ export const contactInfo = {
   mapHref:
     "https://www.google.com/maps/search/?api=1&query=Huzurevleri%20Mah.%2077246%20Sk.%20Mehmet%20T%C3%BCmer%20Apt.%20Zemin%20Kat%20No%3A%2037%20%C3%87ukurova%20Adana",
   mapEmbedSrc:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m3!1d3184.28383842146!2d35.2968!3d37.0514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15288e0000000000%3A0x0!2sHuzurevleri%20Mah.%2077246%20Sk.%20Mehmet%20T%C3%BCmer%20Apt.%20Zemin%20Kat%20No%3A%2037%20%C3%87ukurova%20%2F%20Adana!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str",
+    "https://www.google.com/maps/d/embed?mid=1HXdI1gtwN-FPv-0w1K_nF_3c8BHaX5Vl&ehbc=2E312F",
   socials: [
     { name: "Facebook", href: "" },
     { name: "Instagram", href: "" },

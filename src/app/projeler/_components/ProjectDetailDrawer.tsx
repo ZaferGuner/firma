@@ -1,6 +1,7 @@
 "use client";
 
-import { X, MapPin, Phone, MessageSquare } from "lucide-react";
+import Link from "next/link";
+import { X, MapPin } from "lucide-react";
 import { useEffect } from "react";
 import { ProjectPlaceholderVisual } from "./ProjectPlaceholderVisual";
 import { motion, AnimatePresence } from "motion/react";
@@ -158,31 +159,24 @@ export function ProjectDetailDrawer({
             </div>
 
             {/* Action / Contact Rail */}
-            <div className="border-t border-[rgba(0,0,0,0.12)] bg-[#f8f7f3] p-6 space-y-3">
-              <a
-                href="https://wa.me/905330618001?text=Merhaba%2C%20projeniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex w-full items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white py-3.5 text-xs font-bold tracking-[0.2em] uppercase transition-colors rounded-sm"
-              >
-                <i className="fa-brands fa-whatsapp text-base" />
-                <span>WhatsApp ile Detaylı Bilgi Al</span>
-              </a>
-              <div className="grid grid-cols-2 gap-3">
+            <div className="border-t border-[rgba(0,0,0,0.12)] bg-[#f8f7f3] p-6">
+              <div className="grid grid-cols-3 gap-3">
                 <a
-                  href="tel:+905330618001"
-                  className="flex items-center justify-center gap-2 border border-[#111111] text-[#111111] hover:bg-[#111111] hover:text-white py-3 text-[10px] font-bold tracking-[0.2em] uppercase transition-colors rounded-none"
+                  href="https://wa.me/905330618001?text=Merhaba%2C%20projeniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="col-span-2 flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white py-3.5 text-xs font-bold tracking-[0.2em] uppercase transition-colors rounded-sm"
                 >
-                  <Phone size={13} />
-                  <span>HEMEN ARA</span>
+                  <i className="fa-brands fa-whatsapp text-base" />
+                  <span className="hidden sm:inline">WhatsApp ile Detaylı Bilgi Al</span>
+                  <span className="sm:hidden">WhatsApp</span>
                 </a>
-                <a
-                  href="/iletisim"
-                  className="flex items-center justify-center gap-2 bg-[#111111] text-white hover:bg-[rgba(17,17,17,0.85)] py-3 text-[10px] font-bold tracking-[0.2em] uppercase transition-all rounded-none"
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="col-span-1 flex items-center justify-center bg-[#111111] px-3 py-3.5 text-center text-[10px] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[rgba(17,17,17,0.85)] rounded-sm"
                 >
-                  <MessageSquare size={13} />
-                  <span>İLETİŞİME GEÇ</span>
-                </a>
+                  Detay
+                </Link>
               </div>
             </div>
           </motion.div>

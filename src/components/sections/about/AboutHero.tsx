@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 
 import { Container } from "@/components/ui/Container";
 import { aboutHero } from "@/data/about";
@@ -10,7 +10,10 @@ export function AboutHero() {
   const shouldPlay = useShouldPlayHeroIntro();
 
   return (
-    <section className="relative min-h-[100svh] w-full overflow-hidden bg-background text-site-text flex flex-col justify-center border-b border-site-border">
+    <section
+      data-header-theme="light"
+      className="relative min-h-[100svh] w-full overflow-hidden bg-background text-site-text flex flex-col justify-center border-b border-site-border"
+    >
       {/* Background blueprint grid / lines */}
       <div 
         className="absolute inset-0 z-0 opacity-40 pointer-events-none" 
@@ -65,24 +68,6 @@ export function AboutHero() {
           </motion.div>
         </motion.div>
       </Container>
-
-      {/* Scroll indicator */}
-      <motion.div 
-        data-motion-reveal
-        className="absolute bottom-12 left-6 lg:left-12 flex items-center gap-3 text-site-muted z-10"
-        initial={shouldPlay ? { opacity: 0 } : false}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.8 }}
-      >
-        <div className="flex h-10 w-6 justify-center rounded-full border border-site-border p-1">
-          <motion.div 
-            className="h-1.5 w-1.5 rounded-full bg-site-primary"
-            animate={{ y: [0, 16, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          />
-        </div>
-        <span className="text-[10px] uppercase tracking-widest font-medium">KEŞFET</span>
-      </motion.div>
     </section>
   );
 }

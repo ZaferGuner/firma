@@ -6,6 +6,7 @@ import { ProjectInfo } from "@/app/projeler/[slug]/_components/ProjectInfo";
 import { ProjectFeatures } from "@/app/projeler/[slug]/_components/ProjectFeatures";
 import { ProjectGallery } from "@/app/projeler/[slug]/_components/ProjectGallery";
 import { ProjectDetailCTA } from "@/app/projeler/[slug]/_components/ProjectDetailCTA";
+import { AdminAutoOpenSection } from "@/components/admin/AdminAutoOpenSection";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -39,6 +40,7 @@ export default async function AdminEditProjectDetailPage({ params }: Props) {
 
   return (
     <main className="flex min-h-screen flex-col bg-background">
+      <AdminAutoOpenSection sectionKey={`project.${project.slug}`} />
       <ProjectDetailHero project={project} />
       <ProjectInfo project={project} />
       <ProjectFeatures project={project} />

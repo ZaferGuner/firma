@@ -1,9 +1,8 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState, ReactNode } from "react";
-import { flushSync } from "react-dom";
 import { usePathname, useRouter } from "next/navigation";
-import { hardScrollToTop, hardScrollToHashWithRetry, smoothScrollToTop, scrollToHash } from "@/lib/scrollToHash";
+import { hardScrollToTop, hardScrollToHashWithRetry } from "@/lib/scrollToHash";
 import { getHrefParts, isSpecialHref, normalizePath } from "@/lib/transitionNavigation";
 import { usePageIntro } from "@/providers/PageIntroProvider";
 
@@ -190,91 +189,21 @@ export function IframeTransitionProvider({ children }: { children: ReactNode }) 
     });
   }, []);
 
-  const startPopstateTransition = useCallback((targetHref: string, previousHref: string) => {
-    if (phaseRef.current !== "idle") {
-      previousHrefRef.current = targetHref;
-      return;
-    }
-
-    clearTimers();
-
-    // Set route transition arrival flag for back/forward navigation
-    if (typeof window !== "undefined") {
-      sessionStorage.setItem("tt-route-transition-arrival", "1");
-      sessionStorage.setItem("tt-route-transition-ts", Date.now().toString());
-      document.documentElement.dataset.suppressPageIntro = "true";
-      suppressNextPageIntro("popstate-transition");
-    }
-
-    transitionSourceRef.current = "popstate";
-    setTransitionSource("popstate");
-    pendingHrefRef.current = targetHref;
-    startHrefRef.current = previousHref;
-    startPathRef.current = getHrefParts(previousHref).path || "/";
-    routingCompletionStartedRef.current = false;
-    hasPushedRef.current = true; // Popstate'te router.push yok
-
-    // Popstate'te URL zaten değiştiği için targetHref doğrudan iframe preview olur.
-    setTargetHref(targetHref);
-    setBackgroundHref(targetHref);
-    setPreviewReady(false);
-
-    // Kritik: overlay state mümkün olan en erken anda açılmalı.
-    phaseRef.current = "preparing";
-    setPhase("preparing");
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        if (
-          phaseRef.current === "preparing" &&
-          transitionSourceRef.current === "popstate"
-        ) {
-          phaseRef.current = "enter";
-          setPhase("enter");
-        }
-      });
-    });
-  }, [clearTimers]);
-
   useEffect(() => {
     const onPopState = () => {
       const targetHref = getCurrentHref();
-      const previousHref = previousHrefRef.current || "/";
-
-      // Browser back/forward -> Set flags immediately so target page renders with bypass on first tick
-      if (typeof window !== "undefined") {
-        sessionStorage.setItem("tt-route-transition-arrival", "1");
-        sessionStorage.setItem("tt-route-transition-ts", Date.now().toString());
-        document.documentElement.dataset.suppressPageIntro = "true";
-      }
-
-      const previousParts = getHrefParts(previousHref);
-      const targetParts = getHrefParts(targetHref);
-
-      const previousPath = normalizePath(previousParts.path || "/");
-      const targetPath = normalizePath(targetParts.path || "/");
-
-      // Aynı pathname ise büyük transition yok.
-      if (previousPath === targetPath) {
-        if (targetParts.hash) {
-          window.setTimeout(() => {
-            scrollToHash(targetParts.hash, "smooth");
-          }, 0);
-        } else {
-          window.setTimeout(() => {
-            smoothScrollToTop();
-          }, 0);
-        }
-
-        previousHrefRef.current = targetHref;
-        return;
-      }
-
-      // Farklı path ise iframe transition başlat.
-      // flushSync ile preparing state aynı event tick içinde DOM'a basılsın.
-      flushSync(() => {
-        startPopstateTransition(targetHref, previousHref);
-      });
+      clearTimers();
+      phaseRef.current = "idle";
+      setPhase("idle");
+      setTargetHref(null);
+      setBackgroundHref(null);
+      setPreviewReady(false);
+      pendingHrefRef.current = null;
+      startHrefRef.current = null;
+      startPathRef.current = null;
+      routingCompletionStartedRef.current = false;
+      hasPushedRef.current = false;
+      previousHrefRef.current = targetHref;
     };
 
     window.addEventListener("popstate", onPopState);
@@ -282,7 +211,7 @@ export function IframeTransitionProvider({ children }: { children: ReactNode }) 
     return () => {
       window.removeEventListener("popstate", onPopState);
     };
-  }, [startPopstateTransition]);
+  }, [clearTimers]);
 
   const navigate = useCallback((href: string, options?: { onBeforeNavigate?: () => void }) => {
     if (phaseRef.current !== "idle") return;

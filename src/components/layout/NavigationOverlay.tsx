@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { type CSSProperties, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Diamond } from "lucide-react";
 import { IframeTransitionLink } from "@/components/animation/IframeTransitionLink";
@@ -12,6 +12,7 @@ type NavigationOverlayProps = {
   open: boolean;
   onClose: () => void;
   onContactRequest: () => void;
+  mobilePanelWidth?: number;
 };
 
 const easeOutCss = "cubic-bezier(0.22, 1, 0.36, 1)";
@@ -22,6 +23,7 @@ export function NavigationOverlay({
   open,
   onClose,
   onContactRequest,
+  mobilePanelWidth = 320,
 }: NavigationOverlayProps) {
   const visible = open;
   const pathname = usePathname();
@@ -78,9 +80,10 @@ export function NavigationOverlay({
         >
           <nav
             aria-label="Ana menü"
-            className="w-[calc(100vw_-_64px)] max-w-[320px] md:w-[clamp(360px,28vw,440px)] md:max-w-none bg-site-dark py-[28px] px-6 sm:py-[44px] sm:px-12 text-site-dark-text shadow-[0_40px_120px_rgba(0,0,0,0.55)] will-change-transform border border-white/5 overflow-y-auto max-h-[calc(100svh_-_170px)] md:max-h-[620px] lg:max-h-[64vh]"
+            className="w-[var(--mobile-navigation-panel-width)] max-w-[calc(100vw_-_48px)] md:w-[clamp(360px,28vw,440px)] md:max-w-none bg-site-dark py-[34px] px-6 sm:py-[44px] sm:px-12 text-site-dark-text shadow-[0_40px_120px_rgba(0,0,0,0.55)] will-change-transform border border-white/5 overflow-y-auto max-h-[calc(100svh_-_150px)] md:max-h-[620px] lg:max-h-[64vh]"
             data-navigation-panel
             style={{
+              "--mobile-navigation-panel-width": `${mobilePanelWidth}px`,
               opacity: visible ? 1 : 0,
               transform: visible
                 ? "translateY(0) scale(1)"
@@ -91,7 +94,7 @@ export function NavigationOverlay({
               }, transform ${visible ? 430 : 320}ms ${
                 visible ? revealEaseCss : slowEaseCss
               }`,
-            }}
+            } as CSSProperties}
           >
             <div
               style={{

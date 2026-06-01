@@ -17,7 +17,7 @@ export function AdminEditButton({ onClick, label, position = "top-right" }: Admi
   };
 
   return (
-    <div className={`absolute z-[90] ${positionClasses[position]} opacity-0 group-hover:opacity-100 transition-opacity duration-200`}>
+    <div className={`absolute z-[10002] ${positionClasses[position]} opacity-0 group-hover:opacity-100 transition-opacity duration-200`} data-admin-edit-overlay>
       <button
         onClick={(e) => {
           e.preventDefault();
@@ -25,7 +25,8 @@ export function AdminEditButton({ onClick, label, position = "top-right" }: Admi
           onClick();
         }}
         type="button"
-        className="pointer-events-auto flex items-center justify-center bg-dark-bg px-4 py-2 font-mono text-[9px] font-bold uppercase tracking-[0.24em] text-dark-text transition-colors hover:bg-[var(--color-primary)] cursor-pointer"
+        data-admin-edit-button
+        className="admin-blue-button pointer-events-auto flex items-center justify-center bg-dark-bg px-4 py-2 font-mono text-[9px] font-bold uppercase tracking-[0.24em] text-dark-text transition-colors hover:bg-[var(--color-primary)] cursor-pointer"
         title={label}
       >
         [{label}]

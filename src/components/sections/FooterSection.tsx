@@ -1,14 +1,12 @@
-import { contactInfo } from "@/data/home";
+import { IframeTransitionLink } from "@/components/animation/IframeTransitionLink";
 
-const footerLinks = [
-  { label: "Projeler", href: "/projeler" },
-  { label: "Hakkımızda", href: "/kurumsal" },
-  { label: "İletişim", href: "/iletisim" },
-  { label: "KVKK", href: "/kurumsal" },
-  { label: "Gizlilik Politikası", href: "/kurumsal" },
-] as const;
+type FooterSettings = {
+  siteName?: string;
+  footerDescription?: string;
+  footerCopyright?: string;
+};
 
-export function FooterSection({ globalSettings }: { globalSettings?: any }) {
+export function FooterSection({ globalSettings }: { globalSettings?: FooterSettings }) {
   return (
     <footer data-header-theme="dark" className="bg-[#2E302B] py-16 lg:py-24 relative group border-t border-[rgba(245,242,234,0.10)] pb-[140px] lg:pb-[120px]">
       <div className="container mx-auto px-6 lg:px-12 xl:px-20 flex flex-col items-center text-center">
@@ -30,10 +28,10 @@ export function FooterSection({ globalSettings }: { globalSettings?: any }) {
 
         {/* LINKS */}
         <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-16">
-          <a href="/" className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#F5F2EA] hover:text-white transition-colors">Ana Sayfa</a>
-          <a href="/about" className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#F5F2EA] hover:text-white transition-colors">Hakkımızda</a>
-          <a href="/projeler" className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#F5F2EA] hover:text-white transition-colors">Projeler</a>
-          <a href="/contact" className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#F5F2EA] hover:text-white transition-colors">İletişim</a>
+          <IframeTransitionLink href="/" className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#F5F2EA] hover:text-white transition-colors">Ana Sayfa</IframeTransitionLink>
+          <IframeTransitionLink href="/about" className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#F5F2EA] hover:text-white transition-colors">Hakkımızda</IframeTransitionLink>
+          <IframeTransitionLink href="/projeler" className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#F5F2EA] hover:text-white transition-colors">Projeler</IframeTransitionLink>
+          <IframeTransitionLink href="/contact" className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#F5F2EA] hover:text-white transition-colors">İletişim</IframeTransitionLink>
         </div>
 
         {/* COPYRIGHT */}
@@ -41,6 +39,14 @@ export function FooterSection({ globalSettings }: { globalSettings?: any }) {
           <p className="text-[10px] uppercase tracking-[0.15em] text-[#C8C2B6]">
             {globalSettings?.footerCopyright || "© 2026 Taner Tümer İnşaat. Tüm hakları saklıdır."}
           </p>
+          <a
+            href="https://zaferguner.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 text-[10px] tracking-[0.15em] text-[#C8C2B6]/70 transition-colors hover:text-[#F5F2EA]"
+          >
+            DESIGNED BY ZAFER GÜNER
+          </a>
         </div>
         
       </div>

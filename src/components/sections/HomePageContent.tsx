@@ -24,6 +24,7 @@ type HomePageContentProps = {
     process?: any;
     buildingApproach?: any;
     regions?: any;
+    featuredProjects?: any[];
   };
 };
 
@@ -37,7 +38,7 @@ export function HomePageContent({ intro = true, initialData }: HomePageContentPr
       <HomeStatement initialData={initialData?.statement} />
       
       {/* 3. Öne Çıkan Projeler: Açık */}
-      <FeaturedProjects initialData={initialData?.featuredIntro} />
+      <FeaturedProjects initialData={initialData?.featuredIntro} initialProjects={initialData?.featuredProjects} />
       
       {/* 4. Uzmanlık Alanlarımız: Koyu */}
       <ExpertiseSection initialData={initialData?.expertise} />
@@ -62,4 +63,3 @@ export function HomePageContent({ intro = true, initialData }: HomePageContentPr
     </main>
   );
 }
-

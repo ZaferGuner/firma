@@ -28,7 +28,7 @@ function SettingsForm() {
     adminContext?.updateDraftContent(section, field, value);
   };
 
-  const inputClass = "w-full bg-surface border border-neutral-300 px-3 py-2 text-sm focus:outline-none focus:border-black rounded";
+  const inputClass = "w-full bg-white border border-neutral-300 px-3 py-2 text-sm text-[#111827] focus:outline-none focus:border-[var(--color-primary)] rounded";
 
   const renderSeoSection = (title: string, sectionKey: string, data: any) => (
     <div className="bg-surface p-6 rounded-xl border border-neutral-200">
@@ -157,9 +157,15 @@ function SettingsForm() {
   );
 }
 
-export function SettingsClient({ initialData }: { initialData: any }) {
+export function SettingsClient({
+  initialDrafts,
+  initialPublished,
+}: {
+  initialDrafts: Record<string, any>;
+  initialPublished: Record<string, any>;
+}) {
   return (
-    <AdminEditProvider initialDrafts={initialData} initialPublished={initialData}>
+    <AdminEditProvider initialDrafts={initialDrafts} initialPublished={initialPublished}>
       <AdminEditBar />
       <SettingsForm />
     </AdminEditProvider>

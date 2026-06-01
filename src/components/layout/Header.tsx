@@ -28,13 +28,10 @@ export function Header({ initialCtaText = "BİLGİ AL", initialCtaLink = "/ileti
   const [ctaVisible, setCtaVisible] = useState(false);
 
   useEffect(() => {
-    if (phase !== "idle") {
-      setCtaVisible(false);
-      return;
-    }
     const timeout = window.setTimeout(() => {
-      setCtaVisible(true);
-    }, 600);
+      setCtaVisible(phase === "idle");
+    }, phase === "idle" ? 600 : 0);
+
     return () => window.clearTimeout(timeout);
   }, [phase]);
 
@@ -121,7 +118,8 @@ export function Header({ initialCtaText = "BİLGİ AL", initialCtaLink = "/ileti
 
   useEffect(() => {
     const updateBarWidth = () => {
-      setBarWidth(Math.max(58, Math.min(360, window.innerWidth - 96)));
+      const mobileInset = window.innerWidth < 640 ? 64 : 96;
+      setBarWidth(Math.max(58, Math.min(360, window.innerWidth - mobileInset)));
     };
 
     updateBarWidth();
@@ -202,7 +200,7 @@ export function Header({ initialCtaText = "BİLGİ AL", initialCtaLink = "/ileti
 
   const logoHref = getAdminLink("/");
 
-  if (pathname === "/bakim") {
+  if (pathname === "/bakim" || pathname === "/admin/login") {
     return null;
   }
 
@@ -381,6 +379,7 @@ export function Header({ initialCtaText = "BİLGİ AL", initialCtaLink = "/ileti
         open={open}
         onClose={closeNavigation}
         onContactRequest={openContactFromNavigation}
+        mobilePanelWidth={barWidth}
       />
       <ContactModal
         isOpen={contactOpen}

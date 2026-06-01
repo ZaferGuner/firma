@@ -2,10 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import { Check, ChevronDown, ChevronUp, Plus, Trash2, X } from "lucide-react";
+import { useLenis } from "lenis/react";
 import { useAdminEdit } from "@/context/AdminEditContext";
 
 const inputClass =
-  "w-full bg-[var(--color-surface)] border border-neutral-300 px-3 py-2 text-xs text-[var(--color-text)] focus:outline-none focus:border-[var(--color-primary)]";
+  "w-full bg-white border border-neutral-300 px-3 py-2 text-xs text-[#111827] placeholder:text-neutral-400 focus:outline-none focus:border-[var(--color-primary)]";
 const monoInputClass = `${inputClass} font-mono`;
 
 const pressTypes = ["Haber", "Duyuru", "Röportaj", "Proje Tanıtımı"];
@@ -58,6 +59,7 @@ function todayString() {
 
 export function EditDrawer() {
   const context = useAdminEdit();
+  const lenis = useLenis();
 
   const [newProjState, setNewProjState] = useState({
     title: "",
@@ -120,6 +122,22 @@ export function EditDrawer() {
       });
     }
   }, [context?.activeSectionKey, context?.draftProjects?.length, context?.draftPressItems?.length]);
+
+  useEffect(() => {
+    if (!context?.activeSectionKey) return;
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    lenis?.stop();
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+      lenis?.start();
+    };
+  }, [context?.activeSectionKey, lenis]);
 
   if (!context) {
     return null;
@@ -415,6 +433,9 @@ export function EditDrawer() {
         <Field label="Proje Adı">
           <input className={inputClass} value={projectData.title || ""} onChange={(event) => handleProjectFieldChange("title", event.target.value)} />
         </Field>
+        <Field label="Proje Slug / URL">
+          <input className={`${monoInputClass} bg-neutral-100`} value={projectData.slug || ""} readOnly />
+        </Field>
         <Field label="Kategori">
           <select className={inputClass} value={projectData.category || "Villa Projesi"} onChange={(event) => handleProjectFieldChange("category", event.target.value)}>
             <option value="Villa Projesi">Villa Projesi</option>
@@ -433,6 +454,9 @@ export function EditDrawer() {
         </Field>
         <Field label="Kapak Görseli Yolu">
           <input className={monoInputClass} value={projectData.coverImage || ""} onChange={(event) => handleProjectFieldChange("coverImage", event.target.value)} />
+        </Field>
+        <Field label="Görsel Klasörü">
+          <input className={monoInputClass} value={projectData.imagesFolder || ""} onChange={(event) => handleProjectFieldChange("imagesFolder", event.target.value)} />
         </Field>
         <Field label="Fotoğraf Sayısı">
           <input type="number" className={inputClass} value={projectData.imageCount || 0} onChange={(event) => handleProjectFieldChange("imageCount", parseInt(event.target.value, 10) || 0)} />
@@ -1161,6 +1185,29 @@ export function EditDrawer() {
             {renderTextInput("WhatsApp Buton Metni", "whatsappButtonText")}
           </div>
         );
+      case "projects.hero":
+        return (
+          <div className="space-y-6">
+            <SectionTitle>Projeler Hero</SectionTitle>
+            {renderTextInput("Üst Etiket", "eyebrow")}
+            {renderTextInput("Başlık", "title")}
+            {renderTextarea("Açıklama", "description", 4)}
+          </div>
+        );
+      case "projects.cta":
+        return (
+          <div className="space-y-6">
+            <SectionTitle>Projeler CTA</SectionTitle>
+            {renderTextarea("Başlık", "title", 3)}
+            {renderTextarea("Açıklama", "description", 4)}
+            <SectionTitle>Birinci Buton</SectionTitle>
+            {renderTextInput("Buton Metni", "primaryButtonText")}
+            {renderTextInput("Buton Linki", "primaryButtonLink", { monospaced: true })}
+            <SectionTitle>İkinci Buton</SectionTitle>
+            {renderTextInput("Buton Metni", "secondaryButtonText")}
+            {renderTextInput("Buton Linki", "secondaryButtonLink", { monospaced: true })}
+          </div>
+        );
       case "press.hero":
         return (
           <div className="space-y-6">
@@ -1243,6 +1290,8 @@ export function EditDrawer() {
       "contact.form": "İletişim Formu",
       "contact.process": "İletişim Süreci",
       "contact.cta": "İletişim CTA",
+      "projects.hero": "Projeler Hero",
+      "projects.cta": "Projeler CTA",
       "press.hero": "Basın Hero",
       "press.empty": "Basın Boş Durum",
       "press.mediaKit": "Medya Kiti",
@@ -1254,7 +1303,12 @@ export function EditDrawer() {
   })();
 
   return (
-    <div className="fixed top-[60px] right-0 bottom-0 z-[150] w-[380px] border-l border-neutral-200 bg-surface text-[var(--color-text)] flex flex-col select-none shadow-[0_-8px_40px_rgba(0,0,0,0.08)]">
+    <div
+      className="admin-edit-drawer fixed top-[60px] right-0 bottom-0 z-[10003] w-[380px] border-l border-neutral-200 bg-surface text-[var(--color-text)] flex flex-col select-none shadow-[0_-8px_40px_rgba(0,0,0,0.08)]"
+      data-lenis-prevent
+      onWheel={(event) => event.stopPropagation()}
+      onTouchMove={(event) => event.stopPropagation()}
+    >
       <div className="flex items-center justify-between border-b border-neutral-200 p-5">
         <div className="flex flex-col">
           <span className="font-mono text-[8px] uppercase tracking-widest text-neutral-400">
@@ -1274,7 +1328,7 @@ export function EditDrawer() {
         </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-6 space-y-6">
+      <div className="admin-edit-drawer-scroll flex-1 overflow-y-auto p-6 space-y-6" data-lenis-prevent>
         {renderFormFields()}
       </div>
 
